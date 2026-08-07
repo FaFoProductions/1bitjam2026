@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
         {
             if (isGrounded || airJumps > 0)
             {
-                if (airJumps > 0 ) {airJumps--;}
+                if (!isGrounded && airJumps > 0 ) {airJumps--;}
                 jump = true;
             }
         }
