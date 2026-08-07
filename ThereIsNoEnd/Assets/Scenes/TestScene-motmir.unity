@@ -921,6 +921,7 @@ MonoBehaviour:
   horDrag: 0.9
   accel: 1
   jumpforce: 5
+  groundSensitivity: 0.52
   isGrounded: 0
   moveDir: {x: 0, y: 0}
 --- !u!50 &1521088657

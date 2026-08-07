@@ -9,11 +9,11 @@ public class Movement : MonoBehaviour
     [SerializeField] LayerMask playerLayer;
 
     [Header("Movement Settings")]
-    public float topSpeed;
+    public float topSpeed = 5;
     public float horDrag = 0.9f;
-    public float accel;
-    public float jumpforce;
-    public float groundSensitivity;
+    public float accel = 1;
+    public float jumpforce = 10;
+    public float groundSensitivity = 0.52;
     public bool isGrounded = true;
     public Vector2 moveDir;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
