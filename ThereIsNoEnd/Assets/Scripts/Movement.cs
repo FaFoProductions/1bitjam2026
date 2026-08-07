@@ -18,7 +18,10 @@ public class Movement : MonoBehaviour
     public Vector2 moveDir;
     public int maxAirJumps = 0;
     public int airJumps = 0;
+    // Float effect lower value is more floaty
+    public float floatEffect = 0.2f;
     private bool jump;
+    private bool glide;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
     void Awake()
@@ -63,6 +66,10 @@ public class Movement : MonoBehaviour
                 if (!isGrounded && airJumps > 0 ) {airJumps--;}
                 jump = true;
             }
+        } else if (context.phase == InputActionPhase.Performed) {
+            glide = true;
+        } else if (context.phase == InputActionPhase.Canceled) {
+            glide = false;
         }
     }
 
@@ -102,6 +109,10 @@ public class Movement : MonoBehaviour
         if (jump) {
             newVelocity.y = jumpforce;
             jump = false;
+        }
+
+        if (glide) {
+            newVelocity.y = Mathf.Clamp(newVelocity.y, -floatEffect, jumpforce);
         }
 
         rb.linearVelocity = newVelocity;
