@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 7488170491376124473}
   - component: {fileID: 4672767296165934017}
   - component: {fileID: 812141241740025331}
-  - component: {fileID: 361067012578949522}
+  - component: {fileID: 8717292772650610521}
   m_Layer: 7
   m_Name: CubeLady
   m_TagString: Untagged
@@ -215,6 +215,8 @@ MonoBehaviour:
   jumpforce: 5
   groundSensitivity: 0.1
   grounded: 1
+  walledLeft: 0
+  walledRight: 0
   moveDir: {x: 0, y: 0}
   maxAirJumps: 0
   airJumps: 0
@@ -247,8 +249,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &361067012578949522
-BoxCollider2D:
+--- !u!70 &8717292772650610521
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -282,14 +284,5 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Direction: 0
