@@ -18,7 +18,9 @@ public class Movement : MonoBehaviour
     public float horDrag = 0.9f;
     public float accel = 1f;
     public float jumpforce = 10;
+    public float highSpeedGraceTimeInS = 2f;
     public float groundSensitivity = 0.2f;
+    public float decayMod = 0.9f;
     public bool grounded = true;
     public bool walledLeft;
     public bool walledRight;
@@ -28,6 +30,7 @@ public class Movement : MonoBehaviour
     public float wallJumpMod;
     // Float effect lower value is more floaty
     public float floatEffect = 0.2f;
+    private float graceTime;
     private bool jump;
     private bool glide;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -98,6 +101,11 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Count down speed grace if active
+        if (graceTime > 0) {
+            graceTime -= Time.deltaTime;
+        }
+
         // Check if on ground
         grounded = isGrounded(groundPos);
 
@@ -113,11 +121,22 @@ public class Movement : MonoBehaviour
         // Check if moving
         if (moveDir.x != 0) {
             newVelocity.x = rb.linearVelocity.x + (moveDir.x * accel);
-            newVelocity.x = Mathf.Clamp(newVelocity.x, -topSpeed, topSpeed);
+            if (graceTime > 0) {
+                newVelocity.x = Mathf.Clamp(newVelocity.x, 
+                Mathf.Min(-topSpeed, (rb.linearVelocity.x)), 
+                Mathf.Max(topSpeed, (rb.linearVelocity.x))
+                );
+            } else {
+                newVelocity.x = Mathf.Clamp(newVelocity.x, 
+                Mathf.Min(-topSpeed, (rb.linearVelocity.x * decayMod)), 
+                Mathf.Max(topSpeed, (rb.linearVelocity.x * decayMod))
+                );
+            }
+
         } else
         {
             newVelocity.x = rb.linearVelocity.x * horDrag;
-            if (newVelocity.x <= 0.1f * topSpeed)
+            if (Mathf.Abs(newVelocity.x) <= 0.1f * topSpeed)
             {
                 newVelocity.x = 0;
             }
@@ -127,10 +146,12 @@ public class Movement : MonoBehaviour
             if (!grounded && walledLeft) {
                 // Walljump from wall on the left
                 newVelocity.x = jumpforce * wallJumpMod;
+                graceTime = highSpeedGraceTimeInS;
 
             } else if (!grounded && walledRight) {
                 // Walljump from wall on the right
                 newVelocity.x = -(jumpforce * wallJumpMod);
+                graceTime = highSpeedGraceTimeInS;
             }
             // Normal jump
             newVelocity.y = jumpforce;
