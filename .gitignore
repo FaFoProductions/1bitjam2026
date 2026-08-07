@@ -19,6 +19,9 @@ ehthumbs.db
 # Gradle cache directory
 .gradle/
 
+# Solution files
+*.slnx
+
 # Visual Studio / MonoDevelop generated
 # =====================================
 [Ee]xported[Oo]bj/
