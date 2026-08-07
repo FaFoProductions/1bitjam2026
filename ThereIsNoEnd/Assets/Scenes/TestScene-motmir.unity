@@ -883,6 +883,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4672767296165934017, guid: 0ffa494feb4bd9cc1a9211b4d842f799, type: 3}
+      propertyPath: wallJumpMod
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7210698098533354611, guid: 0ffa494feb4bd9cc1a9211b4d842f799, type: 3}
       propertyPath: m_Name
       value: CubeLady
