@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     public float horDrag = 0.9f;
     public float accel = 1f;
     public float jumpforce = 10;
+    public float dashforce = 30;
     public float highSpeedGraceTimeInS = 2f;
     public float groundSensitivity = 0.2f;
     public float decayMod = 0.9f;
@@ -33,6 +34,7 @@ public class Movement : MonoBehaviour
     private float graceTime;
     private bool jump;
     private bool glide;
+    private bool dash;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
     void Awake()
@@ -87,11 +89,7 @@ public class Movement : MonoBehaviour
     void DashPerformed(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Started)
         {
-            topSpeed *= 2;
-            accel *= 2;
-        } else if (context.phase == InputActionPhase.Canceled) {
-            topSpeed /= 2;
-            accel /= 2;
+            dash = true;
         }
     }
 
@@ -156,6 +154,11 @@ public class Movement : MonoBehaviour
             // Normal jump
             newVelocity.y = jumpforce;
             jump = false;
+        }
+
+        if (dash) {
+            newVelocity.x = dashforce * Mathf.Sign(rb.linearVelocity.x);
+            dash = false;
         }
 
         if (glide) {
