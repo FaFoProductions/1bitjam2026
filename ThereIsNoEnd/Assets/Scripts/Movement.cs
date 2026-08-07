@@ -32,6 +32,7 @@ public class Movement : MonoBehaviour
         PlayerControls.PlayerMoveActions playerMove = InputManagerSingleton.Instance.playerControlActions.PlayerMove;
         InputManagerSingleton.Instance.Bind(playerMove.Move, MovePerformed);
         InputManagerSingleton.Instance.Bind(playerMove.Jump, JumpPerformed);
+        InputManagerSingleton.Instance.Bind(playerMove.Dash, DashPerformed);
     }
 
     void Stop()
@@ -39,7 +40,7 @@ public class Movement : MonoBehaviour
         PlayerControls.PlayerMoveActions playerMove = InputManagerSingleton.Instance.playerControlActions.PlayerMove;
         InputManagerSingleton.Instance.UnBind(playerMove.Move, MovePerformed);
         InputManagerSingleton.Instance.UnBind(playerMove.Jump, JumpPerformed);
-
+        InputManagerSingleton.Instance.UnBind(playerMove.Dash, DashPerformed);
     }
 
     void MovePerformed(InputAction.CallbackContext context)
@@ -54,8 +55,7 @@ public class Movement : MonoBehaviour
         }
     }
     
-    void JumpPerformed (InputAction.CallbackContext context){
-        Debug.Log($"Jumping");
+    void JumpPerformed(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Started)
         {
             if (isGrounded || airJumps > 0)
@@ -66,15 +66,27 @@ public class Movement : MonoBehaviour
         }
     }
 
+    void DashPerformed(InputAction.CallbackContext context){
+        if (context.phase == InputActionPhase.Started)
+        {
+            topSpeed *= 2;
+            accel *= 2;
+        } else if (context.phase == InputActionPhase.Canceled) {
+            topSpeed /= 2;
+            accel /= 2;
+        }
+    }
+
     void FixedUpdate()
     {
         //Check if on ground
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundSensitivity, ~playerLayer);
         if (isGrounded) {airJumps = maxAirJumps;}
 
-        // Velocity is previous velocity + the new input to a maximum in any given direction of
-        // Check if moving
+        // Velocity is previous velocity + the new input to a maximum in any given direction
         Vector2 newVelocity = rb.linearVelocity;
+        
+        // Check if moving
         if (moveDir.x != 0) {
             newVelocity.x = rb.linearVelocity.x + (moveDir.x * accel);
             newVelocity.x = Mathf.Clamp(newVelocity.x, -topSpeed, topSpeed);

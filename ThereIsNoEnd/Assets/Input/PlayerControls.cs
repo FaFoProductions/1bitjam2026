@@ -649,7 +649,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""priority"": 0
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""632beb80-3f0d-46a6-a2e3-90efe1fab1bb"",
                     ""expectedControlType"": """",
@@ -766,11 +766,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ea57d035-2c77-4259-ae5b-927dc492a9c9"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Interact"",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -833,6 +833,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""aa8c0a45-64ca-450c-92d4-5ec6785948f9"",
                     ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df7b1962-fabe-46ec-ad21-59ff70a63e57"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1196,7 +1207,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerMove_MouseMove = m_PlayerMove.FindAction("MouseMove", throwIfNotFound: true);
         m_PlayerMove_Move = m_PlayerMove.FindAction("Move", throwIfNotFound: true);
         m_PlayerMove_Jump = m_PlayerMove.FindAction("Jump", throwIfNotFound: true);
-        m_PlayerMove_Interact = m_PlayerMove.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerMove_Dash = m_PlayerMove.FindAction("Dash", throwIfNotFound: true);
         m_PlayerMove_Hotbar1 = m_PlayerMove.FindAction("Hotbar 1", throwIfNotFound: true);
         m_PlayerMove_Hotbar2 = m_PlayerMove.FindAction("Hotbar 2", throwIfNotFound: true);
         m_PlayerMove_Hotbar3 = m_PlayerMove.FindAction("Hotbar 3", throwIfNotFound: true);
@@ -1501,7 +1512,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMove_MouseMove;
     private readonly InputAction m_PlayerMove_Move;
     private readonly InputAction m_PlayerMove_Jump;
-    private readonly InputAction m_PlayerMove_Interact;
+    private readonly InputAction m_PlayerMove_Dash;
     private readonly InputAction m_PlayerMove_Hotbar1;
     private readonly InputAction m_PlayerMove_Hotbar2;
     private readonly InputAction m_PlayerMove_Hotbar3;
@@ -1533,9 +1544,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_PlayerMove_Jump;
         /// <summary>
-        /// Provides access to the underlying input action "PlayerMove/Interact".
+        /// Provides access to the underlying input action "PlayerMove/Dash".
         /// </summary>
-        public InputAction @Interact => m_Wrapper.m_PlayerMove_Interact;
+        public InputAction @Dash => m_Wrapper.m_PlayerMove_Dash;
         /// <summary>
         /// Provides access to the underlying input action "PlayerMove/Hotbar1".
         /// </summary>
@@ -1599,9 +1610,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
             @Hotbar1.started += instance.OnHotbar1;
             @Hotbar1.performed += instance.OnHotbar1;
             @Hotbar1.canceled += instance.OnHotbar1;
@@ -1643,9 +1654,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
             @Hotbar1.started -= instance.OnHotbar1;
             @Hotbar1.performed -= instance.OnHotbar1;
             @Hotbar1.canceled -= instance.OnHotbar1;
@@ -2161,12 +2172,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnInteract(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Hotbar 1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
