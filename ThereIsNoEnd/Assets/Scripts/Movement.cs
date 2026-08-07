@@ -1,23 +1,31 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 
 public class Movement : MonoBehaviour
 {
     [Header("General Settings")]
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] LayerMask playerLayer;
+    [SerializeField] LayerMask groundLayer;
+    [SerializeField] Transform groundPos;
+    [SerializeField] Transform leftWallPos;
+    [SerializeField] Transform rightWallPos;
+
 
     [Header("Movement Settings")]
     public float topSpeed = 5f;
     public float horDrag = 0.9f;
     public float accel = 1f;
     public float jumpforce = 10;
-    public float groundSensitivity = 0.52f;
-    public bool isGrounded = true;
+    public float groundSensitivity = 0.2f;
+    public bool grounded = true;
+    public bool walledLeft;
+    public bool walledRight;
     public Vector2 moveDir;
     public int maxAirJumps = 0;
     public int airJumps = 0;
+    public float wallJumpMod;
     // Float effect lower value is more floaty
     public float floatEffect = 0.2f;
     private bool jump;
@@ -61,9 +69,9 @@ public class Movement : MonoBehaviour
     void JumpPerformed(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Started)
         {
-            if (isGrounded || airJumps > 0)
+            if (grounded || walledLeft || walledRight || airJumps > 0)
             {
-                if (!isGrounded && airJumps > 0 ) {airJumps--;}
+                if ((!grounded && !walledLeft && !walledRight) && airJumps > 0 ) {airJumps--;}
                 jump = true;
             }
         } else if (context.phase == InputActionPhase.Performed) {
@@ -84,11 +92,20 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private bool isGrounded(Transform pos) {
+        return Physics2D.OverlapCircle(pos.position, groundSensitivity, groundLayer);
+    }
+
     void FixedUpdate()
     {
-        //Check if on ground
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundSensitivity, ~playerLayer);
-        if (isGrounded) {airJumps = maxAirJumps;}
+        // Check if on ground
+        grounded = isGrounded(groundPos);
+
+        // Check if on wall
+        walledLeft = isGrounded(leftWallPos);
+        walledRight = isGrounded(rightWallPos);
+
+        if (grounded || walledLeft || walledRight) {airJumps = maxAirJumps;}
 
         // Velocity is previous velocity + the new input to a maximum in any given direction
         Vector2 newVelocity = rb.linearVelocity;
@@ -107,6 +124,15 @@ public class Movement : MonoBehaviour
         }
 
         if (jump) {
+            if (!grounded && walledLeft) {
+                // Walljump from wall on the left
+                newVelocity.x = jumpforce * wallJumpMod;
+
+            } else if (!grounded && walledRight) {
+                // Walljump from wall on the right
+                newVelocity.x = -(jumpforce * wallJumpMod);
+            }
+            // Normal jump
             newVelocity.y = jumpforce;
             jump = false;
         }
