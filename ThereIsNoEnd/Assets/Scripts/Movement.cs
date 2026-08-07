@@ -16,6 +16,9 @@ public class Movement : MonoBehaviour
     public float groundSensitivity = 0.52f;
     public bool isGrounded = true;
     public Vector2 moveDir;
+    public int maxAirJumps = 0;
+    public int airJumps = 0;
+    private bool jump;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
     void Awake()
@@ -28,12 +31,15 @@ public class Movement : MonoBehaviour
         // Fix input assignment
         PlayerControls.PlayerMoveActions playerMove = InputManagerSingleton.Instance.playerControlActions.PlayerMove;
         InputManagerSingleton.Instance.Bind(playerMove.Move, MovePerformed);
+        InputManagerSingleton.Instance.Bind(playerMove.Jump, JumpPerformed);
     }
 
     void Stop()
     {
         PlayerControls.PlayerMoveActions playerMove = InputManagerSingleton.Instance.playerControlActions.PlayerMove;
         InputManagerSingleton.Instance.UnBind(playerMove.Move, MovePerformed);
+        InputManagerSingleton.Instance.UnBind(playerMove.Jump, JumpPerformed);
+
     }
 
     void MovePerformed(InputAction.CallbackContext context)
@@ -41,11 +47,22 @@ public class Movement : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             Vector2 targetDir = context.ReadValue<Vector2>();
-            Debug.Log($"Target input dir{targetDir}");
             moveDir = targetDir.normalized;
         } else if (context.phase == InputActionPhase.Canceled)
         {
             moveDir = new Vector2(0,0);
+        }
+    }
+    
+    void JumpPerformed (InputAction.CallbackContext context){
+        Debug.Log($"Jumping");
+        if (context.phase == InputActionPhase.Started)
+        {
+            if (isGrounded || airJumps > 0)
+            {
+                if (airJumps > 0 ) {airJumps--;}
+                jump = true;
+            }
         }
     }
 
@@ -53,6 +70,7 @@ public class Movement : MonoBehaviour
     {
         //Check if on ground
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundSensitivity, ~playerLayer);
+        if (isGrounded) {airJumps = maxAirJumps;}
 
         // Velocity is previous velocity + the new input to a maximum in any given direction of
         // Check if moving
@@ -69,12 +87,10 @@ public class Movement : MonoBehaviour
             }
         }
 
-        if (moveDir.y != 0 && isGrounded)
-        {
+        if (jump) {
             newVelocity.y = jumpforce;
+            jump = false;
         }
-
-        // Apply horizontal drag and clamp newVelocity x dir to topSpeed
 
         rb.linearVelocity = newVelocity;
     }

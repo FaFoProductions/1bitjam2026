@@ -656,28 +656,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "12560903-db0f-4932-9ce5-56fba5521b5c",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "67234d86-1dc7-4d75-893c-14e2bcedbae1",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "left",
                     "id": "30e161e8-2798-4bc6-8184-5025986fb31b",
                     "path": "<Keyboard>/a",
@@ -768,7 +746,7 @@
                 {
                     "name": "",
                     "id": "aa8c0a45-64ca-450c-92d4-5ec6785948f9",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
