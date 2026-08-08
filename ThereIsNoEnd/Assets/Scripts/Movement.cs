@@ -13,12 +13,15 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform rightWallPos;
 
     [Header("Animation settings")]
-    private Animator animator;
+    [SerializeField] public Animator animator;
     [SerializeField] private AudioClip[] footstepClips;
     [SerializeField] private AudioClip[] wetFootstepClips;
+    [SerializeField] private AudioClip jumpingSound;
+    [SerializeField] private AudioClip floatSound;
+    [SerializeField] private AudioClip dashSound;
     [SerializeField] AudioSource footstepSource;
-    private float ySpeed = 0f;
-    private float xSpeed = 0f;
+    [SerializeField] AudioSource dashSource;
+    [SerializeField] AudioSource floatSource;
 
     [Header("Movement Settings")]
     public float topSpeed = 5f;
@@ -41,6 +44,7 @@ public class Movement : MonoBehaviour
     private bool jump;
     private bool glide;
     private bool dash;
+    private bool glideSoundPlayed = false;
     
     void Awake()
     {
@@ -89,6 +93,7 @@ public class Movement : MonoBehaviour
             glide = true;
         } else if (context.phase == InputActionPhase.Canceled) {
             glide = false;
+            glideSoundPlayed = false;
         }
     }
 
@@ -100,8 +105,16 @@ public class Movement : MonoBehaviour
     }
 
     void UpdateAnimVariables(Vector2 dir) {
-        animator.SetFloat("xSpeed", dir.x);
-        animator.SetFloat("ySpeed", dir.y);
+        Debug.Log($"dir: {dir}, grounded: {grounded}");
+        animator.SetFloat("xSpeed", Mathf.Abs(dir.x));
+        animator.SetFloat("ySpeed", Mathf.Abs(dir.y));
+        animator.SetBool("isGrounded", grounded);
+        if (Mathf.Sign(dir.y) >= 0) {
+            animator.SetBool("ySpeedIsUp", true);
+        } else {
+            animator.SetBool("ySpeedIsUp", false);
+        }
+
     }
 
     public void PlayFootstepSound()
@@ -110,6 +123,27 @@ public class Movement : MonoBehaviour
         footstepSource.clip = footstepClips[randomIndex];
         
         footstepSource.Play();
+    }
+
+    public void PlayJumpingSound()
+    {
+        footstepSource.clip = jumpingSound;
+        
+        footstepSource.Play();
+    }
+
+    public void PlayFloatSound()
+    {
+        floatSource.clip = floatSound;
+        
+        floatSource.Play();
+    }
+
+    public void PlayDashSound()
+    {
+        dashSource.clip = dashSound;
+        
+        dashSource.Play();
     }
 
     private bool isGrounded(Transform pos) {
@@ -172,16 +206,24 @@ public class Movement : MonoBehaviour
             }
             // Normal jump
             newVelocity.y = jumpforce;
+            PlayJumpingSound();
             jump = false;
         }
 
         if (dash) {
             newVelocity.x = dashforce * Mathf.Sign(rb.linearVelocity.x);
             dash = false;
+            PlayDashSound();
         }
 
         if (glide) {
             newVelocity.y = Mathf.Clamp(newVelocity.y, -floatEffect, jumpforce);
+            if (Mathf.Sign(newVelocity.y) < 0) {
+                if (glideSoundPlayed == false) {
+                    PlayFloatSound();
+                    glideSoundPlayed = true;
+                }
+            }
         }
 
         UpdateAnimVariables(newVelocity.normalized);

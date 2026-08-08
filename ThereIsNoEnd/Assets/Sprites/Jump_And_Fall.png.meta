@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: e2616feb609ee5f42857e7b5c4531da8
+guid: a82a7cda7a4048a1a8fb6a9174ba1dcc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 979893790589849766
-    second: Walking Loop_0
+      213: 2503707836194139518
+    second: Jump_And_Fall_0
   - first:
-      213: -6318120503535765806
-    second: Walking Loop_1
-  - first:
-      213: 856141668491982325
-    second: Walking Loop_2
-  - first:
-      213: -3645849470666053658
-    second: Walking Loop_3
+      213: -5281917174904641070
+    second: Jump_And_Fall_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -105,93 +99,62 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walking Loop_0
+      name: Jump_And_Fall_0
       rect:
         serializedVersion: 2
-        x: 19
+        x: 0
         y: 0
-        width: 87
+        width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6a018b9f538499d00800000000000000
-      internalID: 979893790589849766
+      spriteID: e7da6b50305feb220800000000000000
+      internalID: 2503707836194139518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walking Loop_1
+      name: Jump_And_Fall_1
       rect:
         serializedVersion: 2
-        x: 157
+        x: 128
         y: 0
-        width: 59
-        height: 124
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2d673aa70e68158a0800000000000000
-      internalID: -6318120503535765806
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walking Loop_2
-      rect:
-        serializedVersion: 2
-        x: 275
-        y: 0
-        width: 87
+        width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5f5ffdbbf40a1eb00800000000000000
-      internalID: 856141668491982325
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walking Loop_3
-      rect:
-        serializedVersion: 2
-        x: 413
-        y: 0
-        width: 59
-        height: 124
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6e767641937576dc0800000000000000
-      internalID: -3645849470666053658
+      spriteID: 2d926c0705cd2b6b0800000000000000
+      internalID: -5281917174904641070
       vertices: []
       indices: 
       edges: []
@@ -200,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 426c7586a01b5c65fbdadad69c35bc80
     internalID: 0
     vertices: []
     indices: 
@@ -208,12 +171,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Walking Loop_0: 979893790589849766
-      Walking Loop_1: -6318120503535765806
-      Walking Loop_2: 856141668491982325
-      Walking Loop_3: -3645849470666053658
+      Jump_And_Fall_0: 2503707836194139518
+      Jump_And_Fall_1: -5281917174904641070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
