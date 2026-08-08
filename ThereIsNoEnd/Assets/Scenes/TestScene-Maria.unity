@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9413f71c163f049a178209fce770ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  dialogue: {fileID: 11400000, guid: f3782dee45b6ca6498179f16463c1bcc, type: 2}
+  dialogue: {fileID: 11400000, guid: 1f26748b83cc92843a926f5141e48db5, type: 2}
   dialogbox: {fileID: 1893244740}
   alertBubble: {fileID: 1622385527}
 --- !u!1 &955154463
@@ -239464,8 +239464,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -10,7 +10,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject characterName;
     [SerializeField] private GameObject dialogueObj;
 
-    private float timeBetween = 1;
     private float timer;
 
     private string[] localDialogue;
@@ -40,7 +39,15 @@ public class DialogueManager : MonoBehaviour
 
     private void LoadNextLine()
     {
-        timer = timeBetween;
+        float wordTime = localDialogue[i].Split(" ").Length / 3;
+        if (wordTime < 3)
+        {
+            timer = 3; 
+        } else
+        {
+            timer = wordTime;
+        }
+        
         dialogueObj.GetComponent<TextMeshProUGUI>().text = localDialogue[i];
         i++;
     }
