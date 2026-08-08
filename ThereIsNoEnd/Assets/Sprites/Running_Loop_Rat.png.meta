@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: a8bfe0ad76671cd43956f64dc5565d9f
+guid: dfdc43e71a8997c48b142acaa955d24e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1516387744112839604
-    second: Idle_Animation_0
+      213: 3312697920866983451
+    second: Running_Loop_Rat_0
   - first:
-      213: -8026313669228311977
-    second: Idle_Animation_1
+      213: -7548590603225880519
+    second: Running_Loop_Rat_1
+  - first:
+      213: 7734270045438570639
+    second: Running_Loop_Rat_2
+  - first:
+      213: 6063320621936605134
+    second: Running_Loop_Rat_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_Animation_0
+      name: Running_Loop_Rat_0
       rect:
         serializedVersion: 2
-        x: 39
+        x: 22
         y: 0
-        width: 58
-        height: 128
+        width: 107
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c44f5628165b4fae0800000000000000
-      internalID: -1516387744112839604
+      spriteID: b1e9375253119fd20800000000000000
+      internalID: 3312697920866983451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_Animation_1
+      name: Running_Loop_Rat_1
       rect:
         serializedVersion: 2
-        x: 168
+        x: 134
         y: 0
-        width: 60
-        height: 126
+        width: 122
+        height: 72
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +146,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 75ac8c93e3ecc9090800000000000000
-      internalID: -8026313669228311977
+      spriteID: 938aedb27d40e3790800000000000000
+      internalID: -7548590603225880519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Running_Loop_Rat_2
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 0
+        width: 107
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f807f4fd0a5a55b60800000000000000
+      internalID: 7734270045438570639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Running_Loop_Rat_3
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 0
+        width: 120
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec7f4d51bfd352450800000000000000
+      internalID: 6063320621936605134
       vertices: []
       indices: 
       edges: []
@@ -160,8 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Idle_Animation_0: -1516387744112839604
-      Idle_Animation_1: -8026313669228311977
+      Running_Loop_Rat_0: 3312697920866983451
+      Running_Loop_Rat_1: -7548590603225880519
+      Running_Loop_Rat_2: 7734270045438570639
+      Running_Loop_Rat_3: 6063320621936605134
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

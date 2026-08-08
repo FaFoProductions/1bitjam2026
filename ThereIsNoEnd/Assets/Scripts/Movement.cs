@@ -12,13 +12,21 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform leftWallPos;
     [SerializeField] Transform rightWallPos;
 
-    [Header("Animation settings")]
-    private Animator animator;
+    [Header("Animation Settings")]
+    [SerializeField] public Animator animator;
     [SerializeField] private AudioClip[] footstepClips;
     [SerializeField] private AudioClip[] wetFootstepClips;
+    [SerializeField] private AudioClip jumpingSound;
+    [SerializeField] private AudioClip floatSound;
+    [SerializeField] private AudioClip dashSound;
     [SerializeField] AudioSource footstepSource;
-    private float ySpeed = 0f;
-    private float xSpeed = 0f;
+    [SerializeField] AudioSource dashSource;
+    [SerializeField] AudioSource floatSource;
+
+    [Header("Particle Settings")]
+    [SerializeField] GameObject dashParticlePrefab;
+    [SerializeField] GameObject jumpParticlePrefab;
+    [SerializeField] Transform jumpParticlePos;
 
     [Header("Movement Settings")]
     public float topSpeed = 5f;
@@ -41,6 +49,8 @@ public class Movement : MonoBehaviour
     private bool jump;
     private bool glide;
     private bool dash;
+    private bool dashAvailable = true;
+    private bool glideSoundPlayed = false;
     
     void Awake()
     {
@@ -89,6 +99,7 @@ public class Movement : MonoBehaviour
             glide = true;
         } else if (context.phase == InputActionPhase.Canceled) {
             glide = false;
+            glideSoundPlayed = false;
         }
     }
 
@@ -100,8 +111,16 @@ public class Movement : MonoBehaviour
     }
 
     void UpdateAnimVariables(Vector2 dir) {
-        animator.SetFloat("xSpeed", dir.x);
-        animator.SetFloat("ySpeed", dir.y);
+        //Debug.Log($"dir: {dir}, grounded: {grounded}");
+        animator.SetFloat("xSpeed", Mathf.Abs(dir.x));
+        animator.SetFloat("ySpeed", Mathf.Abs(dir.y));
+        animator.SetBool("isGrounded", grounded);
+        if (Mathf.Sign(dir.y) >= 0) {
+            animator.SetBool("ySpeedIsUp", true);
+        } else {
+            animator.SetBool("ySpeedIsUp", false);
+        }
+
     }
 
     public void PlayFootstepSound()
@@ -110,6 +129,36 @@ public class Movement : MonoBehaviour
         footstepSource.clip = footstepClips[randomIndex];
         
         footstepSource.Play();
+    }
+
+    public void PlayJumpingSound()
+    {
+        footstepSource.clip = jumpingSound;
+        
+        footstepSource.Play();
+    }
+
+    public void PlayFloatSound()
+    {
+        floatSource.clip = floatSound;
+        
+        floatSource.Play();
+    }
+
+    public void PlayDashSound()
+    {
+        dashSource.clip = dashSound;
+        
+        dashSource.Play();
+    }
+
+    public void PlayJumpParticles(Transform t) {
+        Instantiate(jumpParticlePrefab, t.position, Quaternion.Euler(90,0,0));
+    }
+
+    public void PlayDashParticles(Transform t, Vector2 moveDir) {
+        GameObject dashParticle = Instantiate(dashParticlePrefab, t.position, Quaternion.Euler(0,90 * Mathf.Sign(moveDir.x) * -1,0));
+        dashParticle.GetComponent<ParticleSystem>().startSpeed = dashforce * 0.5f;
     }
 
     private bool isGrounded(Transform pos) {
@@ -125,6 +174,7 @@ public class Movement : MonoBehaviour
 
         // Check if on ground
         grounded = isGrounded(groundPos);
+        if (grounded) {dashAvailable = true;}
 
         // Check if on wall
         walledLeft = isGrounded(leftWallPos);
@@ -164,24 +214,43 @@ public class Movement : MonoBehaviour
                 // Walljump from wall on the left
                 newVelocity.x = jumpforce * wallJumpMod;
                 graceTime = highSpeedGraceTimeInS;
-
+                PlayJumpParticles(leftWallPos);
             } else if (!grounded && walledRight) {
                 // Walljump from wall on the right
                 newVelocity.x = -(jumpforce * wallJumpMod);
                 graceTime = highSpeedGraceTimeInS;
+                PlayJumpParticles(rightWallPos);
+            } else if (grounded) {
+                PlayJumpParticles(jumpParticlePos);
             }
             // Normal jump
             newVelocity.y = jumpforce;
+            PlayJumpingSound();
             jump = false;
         }
 
-        if (dash) {
-            newVelocity.x = dashforce * Mathf.Sign(rb.linearVelocity.x);
+        if (dash && dashAvailable) {
+            if (moveDir.x != 0) {
+                newVelocity.x = dashforce * Mathf.Sign(moveDir.x);
+                dashAvailable = false;
+                PlayDashSound();
+                if (Mathf.Sign(moveDir.x) > 0) {
+                    PlayDashParticles(leftWallPos, moveDir);
+                } else if (Mathf.Sign(moveDir.x) < 0) {
+                    PlayDashParticles(rightWallPos, moveDir);
+                }
+            }
             dash = false;
         }
 
         if (glide) {
             newVelocity.y = Mathf.Clamp(newVelocity.y, -floatEffect, jumpforce);
+            if (Mathf.Sign(newVelocity.y) < 0) {
+                if (glideSoundPlayed == false) {
+                    PlayFloatSound();
+                    glideSoundPlayed = true;
+                }
+            }
         }
 
         UpdateAnimVariables(newVelocity.normalized);
