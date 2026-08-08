@@ -10,6 +10,7 @@ public class MonsterStomp : MonoBehaviour
         {
             Debug.Log("DESTROY MONSTER: " + collision.gameObject.name);
             collision.gameObject.GetComponentInParent<MonsterMovement>().DestroyMonster();
+            GetComponentInParent<Movement>().PlayDoingDamage();
         } 
     }
 }
