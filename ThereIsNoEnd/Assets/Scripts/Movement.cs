@@ -44,11 +44,9 @@ public class Movement : MonoBehaviour
     public bool walledLeft;
     public bool walledRight;
     public Vector2 moveDir;
-    public int maxAirJumps = 0;
     public int airJumps = 0;
     public float wallJumpMod;
     public float floatEffect = 0.2f;
-    public bool canGoWater = false;
     public bool inWater = false;
     private float graceTime;
     private bool jump;
@@ -57,6 +55,11 @@ public class Movement : MonoBehaviour
     private bool dashAvailable = true;
     private bool glideSoundPlayed = false;
     private float speedMod = 1;
+    public bool canGoWater = false;
+    public bool canGoFloat = false;
+    public bool canGoDash = false;
+    public int maxAirJumps = 0;
+    public bool canGoClimb = false;
     
     void Awake()
     {
