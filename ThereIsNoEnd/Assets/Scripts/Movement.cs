@@ -18,9 +18,10 @@ public class Movement : MonoBehaviour
     [SerializeField] private AudioClip[] wetFootstepClips;
     [SerializeField] private AudioClip jumpingSound;
     [SerializeField] private AudioClip floatSound;
+    [SerializeField] private AudioClip dashSound;
     [SerializeField] AudioSource footstepSource;
-    private float ySpeed = 0f;
-    private float xSpeed = 0f;
+    [SerializeField] AudioSource dashSource;
+    [SerializeField] AudioSource floatSource;
 
     [Header("Movement Settings")]
     public float topSpeed = 5f;
@@ -133,9 +134,16 @@ public class Movement : MonoBehaviour
 
     public void PlayFloatSound()
     {
-        footstepSource.clip = floatSound;
+        floatSource.clip = floatSound;
         
-        footstepSource.Play();
+        floatSource.Play();
+    }
+
+    public void PlayDashSound()
+    {
+        dashSource.clip = dashSound;
+        
+        dashSource.Play();
     }
 
     private bool isGrounded(Transform pos) {
@@ -205,6 +213,7 @@ public class Movement : MonoBehaviour
         if (dash) {
             newVelocity.x = dashforce * Mathf.Sign(rb.linearVelocity.x);
             dash = false;
+            PlayDashSound();
         }
 
         if (glide) {
