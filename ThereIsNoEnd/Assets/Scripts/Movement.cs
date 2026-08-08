@@ -1,26 +1,55 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 
 public class Movement : MonoBehaviour
 {
     [Header("General Settings")]
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] LayerMask playerLayer;
+    [SerializeField] LayerMask groundLayer;
+    [SerializeField] Transform groundPos;
+    [SerializeField] Transform leftWallPos;
+    [SerializeField] Transform rightWallPos;
+
+    [Header("Animation settings")]
+    [SerializeField] public Animator animator;
+    [SerializeField] private AudioClip[] footstepClips;
+    [SerializeField] private AudioClip[] wetFootstepClips;
+    [SerializeField] private AudioClip jumpingSound;
+    [SerializeField] private AudioClip floatSound;
+    [SerializeField] private AudioClip dashSound;
+    [SerializeField] AudioSource footstepSource;
+    [SerializeField] AudioSource dashSource;
+    [SerializeField] AudioSource floatSource;
 
     [Header("Movement Settings")]
     public float topSpeed = 5f;
     public float horDrag = 0.9f;
     public float accel = 1f;
     public float jumpforce = 10;
-    public float groundSensitivity = 0.52f;
-    public bool isGrounded = true;
+    public float dashforce = 30;
+    public float highSpeedGraceTimeInS = 2f;
+    public float groundSensitivity = 0.2f;
+    public float decayMod = 0.9f;
+    public bool grounded = true;
+    public bool walledLeft;
+    public bool walledRight;
     public Vector2 moveDir;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int maxAirJumps = 0;
+    public int airJumps = 0;
+    public float wallJumpMod;
+    public float floatEffect = 0.2f;
+    private float graceTime;
+    private bool jump;
+    private bool glide;
+    private bool dash;
+    private bool glideSoundPlayed = false;
     
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     
     void Start()
@@ -28,12 +57,16 @@ public class Movement : MonoBehaviour
         // Fix input assignment
         PlayerControls.PlayerMoveActions playerMove = InputManagerSingleton.Instance.playerControlActions.PlayerMove;
         InputManagerSingleton.Instance.Bind(playerMove.Move, MovePerformed);
+        InputManagerSingleton.Instance.Bind(playerMove.Jump, JumpPerformed);
+        InputManagerSingleton.Instance.Bind(playerMove.Dash, DashPerformed);
     }
 
     void Stop()
     {
         PlayerControls.PlayerMoveActions playerMove = InputManagerSingleton.Instance.playerControlActions.PlayerMove;
         InputManagerSingleton.Instance.UnBind(playerMove.Move, MovePerformed);
+        InputManagerSingleton.Instance.UnBind(playerMove.Jump, JumpPerformed);
+        InputManagerSingleton.Instance.UnBind(playerMove.Dash, DashPerformed);
     }
 
     void MovePerformed(InputAction.CallbackContext context)
@@ -41,40 +74,167 @@ public class Movement : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             Vector2 targetDir = context.ReadValue<Vector2>();
-            Debug.Log($"Target input dir{targetDir}");
             moveDir = targetDir.normalized;
         } else if (context.phase == InputActionPhase.Canceled)
         {
             moveDir = new Vector2(0,0);
         }
     }
+    
+    void JumpPerformed(InputAction.CallbackContext context){
+        if (context.phase == InputActionPhase.Started)
+        {
+            if (grounded || walledLeft || walledRight || airJumps > 0)
+            {
+                if ((!grounded && !walledLeft && !walledRight) && airJumps > 0 ) {airJumps--;}
+                jump = true;
+            }
+        } else if (context.phase == InputActionPhase.Performed) {
+            glide = true;
+        } else if (context.phase == InputActionPhase.Canceled) {
+            glide = false;
+            glideSoundPlayed = false;
+        }
+    }
+
+    void DashPerformed(InputAction.CallbackContext context){
+        if (context.phase == InputActionPhase.Started)
+        {
+            dash = true;
+        }
+    }
+
+    void UpdateAnimVariables(Vector2 dir) {
+        Debug.Log($"dir: {dir}, grounded: {grounded}");
+        animator.SetFloat("xSpeed", Mathf.Abs(dir.x));
+        animator.SetFloat("ySpeed", Mathf.Abs(dir.y));
+        animator.SetBool("isGrounded", grounded);
+        if (Mathf.Sign(dir.y) >= 0) {
+            animator.SetBool("ySpeedIsUp", true);
+        } else {
+            animator.SetBool("ySpeedIsUp", false);
+        }
+
+    }
+
+    public void PlayFootstepSound()
+    {
+        int randomIndex = Random.Range(0, footstepClips.Length);
+        footstepSource.clip = footstepClips[randomIndex];
+        
+        footstepSource.Play();
+    }
+
+    public void PlayJumpingSound()
+    {
+        footstepSource.clip = jumpingSound;
+        
+        footstepSource.Play();
+    }
+
+    public void PlayFloatSound()
+    {
+        floatSource.clip = floatSound;
+        
+        floatSource.Play();
+    }
+
+    public void PlayDashSound()
+    {
+        dashSource.clip = dashSound;
+        
+        dashSource.Play();
+    }
+
+    private bool isGrounded(Transform pos) {
+        return Physics2D.OverlapCircle(pos.position, groundSensitivity, groundLayer);
+    }
 
     void FixedUpdate()
     {
-        //Check if on ground
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundSensitivity, ~playerLayer);
+        // Count down speed grace if active
+        if (graceTime > 0) {
+            graceTime -= Time.deltaTime;
+        }
 
-        // Velocity is previous velocity + the new input to a maximum in any given direction of
-        // Check if moving
+        // Check if on ground
+        grounded = isGrounded(groundPos);
+
+        // Check if on wall
+        walledLeft = isGrounded(leftWallPos);
+        walledRight = isGrounded(rightWallPos);
+
+        if (grounded || walledLeft || walledRight) {airJumps = maxAirJumps;}
+
+        // Velocity is previous velocity + the new input to a maximum in any given direction
         Vector2 newVelocity = rb.linearVelocity;
+        
+        // Check if moving
         if (moveDir.x != 0) {
             newVelocity.x = rb.linearVelocity.x + (moveDir.x * accel);
-            newVelocity.x = Mathf.Clamp(newVelocity.x, -topSpeed, topSpeed);
+            if (graceTime > 0) {
+                newVelocity.x = Mathf.Clamp(newVelocity.x, 
+                Mathf.Min(-topSpeed, (rb.linearVelocity.x)), 
+                Mathf.Max(topSpeed, (rb.linearVelocity.x))
+                );
+            } else {
+                newVelocity.x = Mathf.Clamp(newVelocity.x, 
+                Mathf.Min(-topSpeed, (rb.linearVelocity.x * decayMod)), 
+                Mathf.Max(topSpeed, (rb.linearVelocity.x * decayMod))
+                );
+            }
+
         } else
         {
             newVelocity.x = rb.linearVelocity.x * horDrag;
-            if (newVelocity.x <= 0.1f * topSpeed)
+            if (Mathf.Abs(newVelocity.x) <= 0.1f * topSpeed)
             {
                 newVelocity.x = 0;
             }
         }
 
-        if (moveDir.y != 0 && isGrounded)
-        {
+        if (jump) {
+            if (!grounded && walledLeft) {
+                // Walljump from wall on the left
+                newVelocity.x = jumpforce * wallJumpMod;
+                graceTime = highSpeedGraceTimeInS;
+
+            } else if (!grounded && walledRight) {
+                // Walljump from wall on the right
+                newVelocity.x = -(jumpforce * wallJumpMod);
+                graceTime = highSpeedGraceTimeInS;
+            }
+            // Normal jump
             newVelocity.y = jumpforce;
+            PlayJumpingSound();
+            jump = false;
         }
 
-        // Apply horizontal drag and clamp newVelocity x dir to topSpeed
+        if (dash) {
+            newVelocity.x = dashforce * Mathf.Sign(rb.linearVelocity.x);
+            dash = false;
+            PlayDashSound();
+        }
+
+        if (glide) {
+            newVelocity.y = Mathf.Clamp(newVelocity.y, -floatEffect, jumpforce);
+            if (Mathf.Sign(newVelocity.y) < 0) {
+                if (glideSoundPlayed == false) {
+                    PlayFloatSound();
+                    glideSoundPlayed = true;
+                }
+            }
+        }
+
+        UpdateAnimVariables(newVelocity.normalized);
+
+        // Flip sprite if new movement is to the left instead of default (right)
+        if (newVelocity.x < 0) {
+            GetComponent<SpriteRenderer>().flipX = true;
+        } else if (newVelocity.x > 0){
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+
 
         rb.linearVelocity = newVelocity;
     }

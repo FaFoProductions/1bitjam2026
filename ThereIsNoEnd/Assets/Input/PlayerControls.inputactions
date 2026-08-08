@@ -563,7 +563,7 @@
                     "priority": 0
                 },
                 {
-                    "name": "Interact",
+                    "name": "Dash",
                     "type": "Button",
                     "id": "632beb80-3f0d-46a6-a2e3-90efe1fab1bb",
                     "expectedControlType": "",
@@ -656,28 +656,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "12560903-db0f-4932-9ce5-56fba5521b5c",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "67234d86-1dc7-4d75-893c-14e2bcedbae1",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "left",
                     "id": "30e161e8-2798-4bc6-8184-5025986fb31b",
                     "path": "<Keyboard>/a",
@@ -702,11 +680,11 @@
                 {
                     "name": "",
                     "id": "ea57d035-2c77-4259-ae5b-927dc492a9c9",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -768,6 +746,17 @@
                 {
                     "name": "",
                     "id": "aa8c0a45-64ca-450c-92d4-5ec6785948f9",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df7b1962-fabe-46ec-ad21-59ff70a63e57",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",

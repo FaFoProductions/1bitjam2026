@@ -4,6 +4,7 @@ public class InputManagerSingleton : MonoBehaviour
 {
     public static InputManagerSingleton Instance { get; private set; }
     public PlayerControls playerControlActions { get; private set; }
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
