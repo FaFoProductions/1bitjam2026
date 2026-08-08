@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DoubleJump
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   characterName: Ralph the rat
-  characterSprite: {fileID: -180299653560473758, guid: 8bd9f98cb04fb074888e12a0642d721e, type: 3}
+  characterSprite: {fileID: -2036596472, guid: 8bd9f98cb04fb074888e12a0642d721e, type: 3}
   dialogue:
   - "\xABWith this feather, you should be able to jump on air\xBB (one time after
     jumping normally.)\r\n"
