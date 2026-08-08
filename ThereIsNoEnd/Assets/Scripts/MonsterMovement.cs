@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MonsterMovement : MonoBehaviour
@@ -11,29 +12,23 @@ public class MonsterMovement : MonoBehaviour
     public float chaseDistance;
 
     public int playerLayerMask;
-    private bool firstChase = true;
 
     private void Update()
     {
         // Can we see the player?
-        //RaycastHit2D hit;
+        
         //if (Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
         Vector2 dis = (playerTransform.position - transform.position).normalized;
-        if (Physics2D.Raycast(transform.position, dis, chaseDistance, playerLayerMask))
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dis, chaseDistance);
+        if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
             Debug.Log("We are chasing!!!");
             isChaching = true;
-            // Flip character to towards the player
-    
-            {
-                // If the player is on the left
 
-                // If the player is on the right
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                firstChase = false;
-            }
+ 
         } else
         {
+            Debug.Log("No chase");
             isChaching = false;
         }
 
