@@ -12,6 +12,11 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform leftWallPos;
     [SerializeField] Transform rightWallPos;
 
+    [Header("Animation settings")]
+    private float ySpeed = 0f;
+    private float xSpeed = 0f;
+
+
 
     [Header("Movement Settings")]
     public float topSpeed = 5f;
