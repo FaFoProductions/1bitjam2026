@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd817acf4dc299440bf9d7672610ed01, type: 3}
   m_Name: New Advanced Spike Rule Tile
   m_EditorClassIdentifier: Assembly-CSharp::AdvancedSpikeRuleTile
-  m_DefaultSprite: {fileID: 0}
+  m_DefaultSprite: {fileID: 457741069, guid: c21d0da5f2013b340891a07fc615d343, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
@@ -166,11 +166,11 @@ MonoBehaviour:
     m_Output: 0
     m_ColliderType: 1
     m_RandomTransform: 0
-    m_Neighbors: 010000000100000003000000
+    m_Neighbors: 030000000500000005000000
     m_NeighborPositions:
+    - {x: 1, y: -1, z: 0}
     - {x: 0, y: -1, z: 0}
     - {x: 1, y: 0, z: 0}
-    - {x: 1, y: -1, z: 0}
     m_RuleTransform: 0
   - m_Id: 5
     m_Sprites:
@@ -182,11 +182,11 @@ MonoBehaviour:
     m_Output: 0
     m_ColliderType: 1
     m_RandomTransform: 0
-    m_Neighbors: 010000000100000003000000
+    m_Neighbors: 030000000500000005000000
     m_NeighborPositions:
+    - {x: -1, y: -1, z: 0}
     - {x: 0, y: -1, z: 0}
     - {x: -1, y: 0, z: 0}
-    - {x: -1, y: -1, z: 0}
     m_RuleTransform: 0
   - m_Id: 6
     m_Sprites:
@@ -198,11 +198,11 @@ MonoBehaviour:
     m_Output: 0
     m_ColliderType: 1
     m_RandomTransform: 0
-    m_Neighbors: 010000000100000003000000
+    m_Neighbors: 030000000500000005000000
     m_NeighborPositions:
+    - {x: -1, y: 1, z: 0}
     - {x: -1, y: 0, z: 0}
     - {x: 0, y: 1, z: 0}
-    - {x: -1, y: 1, z: 0}
     m_RuleTransform: 0
   - m_Id: 7
     m_Sprites:
@@ -214,11 +214,11 @@ MonoBehaviour:
     m_Output: 0
     m_ColliderType: 1
     m_RandomTransform: 0
-    m_Neighbors: 010000000100000003000000
+    m_Neighbors: 030000000500000005000000
     m_NeighborPositions:
-    - {x: 0, y: 1, z: 0}
-    - {x: 1, y: 0, z: 0}
     - {x: 1, y: 1, z: 0}
+    - {x: 1, y: 0, z: 0}
+    - {x: 0, y: 1, z: 0}
     m_RuleTransform: 0
   - m_Id: 1
     m_Sprites:

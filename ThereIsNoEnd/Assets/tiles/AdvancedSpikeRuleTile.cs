@@ -12,12 +12,14 @@ public class AdvancedSpikeRuleTile : RuleTile<AdvancedSpikeRuleTile.Neighbor> {
         // unity base: public const int NotThis = 2
         public const int Wall = 3; //add wall tile so we can check against
         public const int Nothing = 4; //add nothing to check against
+        public const int NothingOrSpike = 5; //add wall tile so we can check against
     }
 
     public override bool RuleMatch(int neighbor, TileBase tile) {
         switch (neighbor) {
             case Neighbor.Wall: return Check_Wall(tile);
             case Neighbor.Nothing: return Check_Nothing(tile);
+            case Neighbor.NothingOrSpike: return Check_Nothing(tile) || Check_This(tile);
         }
         return base.RuleMatch(neighbor, tile);
     }
