@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void GoToScene(string sceneName)
+    public void GoToScene(int sceneNum)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneNum);
     }
 
     public void QuitApp()
