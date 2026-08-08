@@ -1,10 +1,22 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:ThereIsNoEnd/Assets/Sprites/Jump_And_Fall.png.meta
+guid: aa59b8a36388fb14ea47e6848e3dc1a0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2503707836194139518
+    second: Jump_And_Fall_0
+  - first:
+      213: -5281917174904641070
+    second: Jump_And_Fall_1
+========
 guid: 89ced990621fa194a98b5fad86907630
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: -9047286990934959639
     second: spikesTest_0
+>>>>>>>> main:ThereIsNoEnd/Assets/spikesTest.png.meta
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +112,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+<<<<<<<< HEAD:ThereIsNoEnd/Assets/Sprites/Jump_And_Fall.png.meta
+      name: Jump_And_Fall_0
+========
       name: spikesTest_0
+>>>>>>>> main:ThereIsNoEnd/Assets/spikesTest.png.meta
       rect:
         serializedVersion: 2
-        x: 0
+        x: 31
         y: 0
+<<<<<<<< HEAD:ThereIsNoEnd/Assets/Sprites/Jump_And_Fall.png.meta
+        width: 74
+        height: 128
+========
         width: 128
         height: 64
+>>>>>>>> main:ThereIsNoEnd/Assets/spikesTest.png.meta
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +136,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
+<<<<<<<< HEAD:ThereIsNoEnd/Assets/Sprites/Jump_And_Fall.png.meta
+      spriteID: e7da6b50305feb220800000000000000
+      internalID: 2503707836194139518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_And_Fall_1
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 0
+        width: 59
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d926c0705cd2b6b0800000000000000
+      internalID: -5281917174904641070
+========
       spriteID: 9e91f449a64917280800000000000000
       internalID: -9047286990934959639
+>>>>>>>> main:ThereIsNoEnd/Assets/spikesTest.png.meta
       vertices: []
       indices: 
       edges: []
@@ -135,7 +183,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<<< HEAD:ThereIsNoEnd/Assets/Sprites/Jump_And_Fall.png.meta
+      Jump_And_Fall_0: 2503707836194139518
+      Jump_And_Fall_1: -5281917174904641070
+========
       spikesTest_0: -9047286990934959639
+>>>>>>>> main:ThereIsNoEnd/Assets/spikesTest.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
