@@ -3,6 +3,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using System.Collections;
+
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject sprite;
 
     private float timer;
+
+    [SerializeField] private float waitTime = 0.05f;
 
     private string[] localDialogue;
 
@@ -42,7 +46,7 @@ public class DialogueManager : MonoBehaviour
 
     private void LoadNextLine()
     {
-        float wordTime = localDialogue[i].Split(" ").Length / 3;
+        float wordTime = localDialogue[i].ToCharArray().Length * waitTime * 1.5f;
         if (wordTime < 3)
         {
             timer = 3; 
@@ -51,7 +55,10 @@ public class DialogueManager : MonoBehaviour
             timer = wordTime;
         }
         
-        dialogueObj.GetComponent<TextMeshProUGUI>().text = localDialogue[i];
+        dialogueObj.GetComponent<TextMeshProUGUI>().text = "";
+        string theLine = localDialogue[i];
+        StopAllCoroutines();
+        StartCoroutine(WriteText(theLine));
         i++;
     }
 
@@ -69,4 +76,14 @@ public class DialogueManager : MonoBehaviour
             
         }
     }
+
+    IEnumerator WriteText(string text)
+    {
+        foreach(char c in text.ToCharArray())
+        {
+            dialogueObj.GetComponent<TextMeshProUGUI>().text += c;
+            yield return new WaitForSeconds(waitTime);
+        }
+    }
+    
 }
