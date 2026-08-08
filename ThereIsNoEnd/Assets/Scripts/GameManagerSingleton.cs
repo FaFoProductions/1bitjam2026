@@ -28,5 +28,6 @@ public class GameManagerSingleton : MonoBehaviour
         player.transform.position = SpawnPoint.position;
         Camera.main.transform.position = player.transform.position;
         player.GetComponent<PlayerHealth>().health = player.GetComponent<PlayerHealth>().maxHealth;
+        AudioManager.Instance.SwapToDefault();
     }
 }
