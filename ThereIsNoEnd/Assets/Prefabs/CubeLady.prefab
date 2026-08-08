@@ -454,7 +454,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6364d9551b7fe669ca49dc8d9c651032, type: 3}
   - {fileID: 8300000, guid: 114bb9cb09ba6b37a89da9f254474462, type: 3}
   - {fileID: 8300000, guid: 0a77e1748feb2318d9579987750ca7d7, type: 3}
-  wetFootstepClips: []
+  wetFootstepClips:
+  - {fileID: 8300000, guid: 9644349ce05af7b589ef96630985748c, type: 3}
+  - {fileID: 8300000, guid: dfd24fb185ca50dbe9811e4ca8b50963, type: 3}
+  - {fileID: 8300000, guid: 06301bc82c9164c1cb1d9a0d86c81546, type: 3}
+  - {fileID: 8300000, guid: 1892ff06554ab5c439ab3e2dbee593a3, type: 3}
   jumpingSound: {fileID: 8300000, guid: 0c7a6872e8f8233d983de4fec4a13032, type: 3}
   floatSound: {fileID: 8300000, guid: d1fc74330c1723532b8380c0968947ec, type: 3}
   dashSound: {fileID: 8300000, guid: d95e429a4698bf36d851f4c2a66c94eb, type: 3}
@@ -480,6 +484,8 @@ MonoBehaviour:
   airJumps: 0
   wallJumpMod: 0.3
   floatEffect: 0.2
+  canGoWater: 0
+  inWater: 0
 --- !u!50 &812141241740025331
 Rigidbody2D:
   serializedVersion: 5

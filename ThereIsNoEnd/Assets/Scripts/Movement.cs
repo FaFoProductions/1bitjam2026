@@ -45,12 +45,15 @@ public class Movement : MonoBehaviour
     public int airJumps = 0;
     public float wallJumpMod;
     public float floatEffect = 0.2f;
+    public bool canGoWater = false;
+    public bool inWater = false;
     private float graceTime;
     private bool jump;
     private bool glide;
     private bool dash;
     private bool dashAvailable = true;
     private bool glideSoundPlayed = false;
+    private float speedMod = 1;
     
     void Awake()
     {
@@ -111,7 +114,6 @@ public class Movement : MonoBehaviour
     }
 
     void UpdateAnimVariables(Vector2 dir) {
-        //Debug.Log($"dir: {dir}, grounded: {grounded}");
         animator.SetFloat("xSpeed", Mathf.Abs(dir.x));
         animator.SetFloat("ySpeed", Mathf.Abs(dir.y));
         animator.SetBool("isGrounded", grounded);
@@ -124,9 +126,15 @@ public class Movement : MonoBehaviour
     }
 
     public void PlayFootstepSound()
-    {
-        int randomIndex = Random.Range(0, footstepClips.Length);
-        footstepSource.clip = footstepClips[randomIndex];
+    {   
+        if (inWater) {
+            int randomIndex = Random.Range(0, wetFootstepClips.Length);
+            footstepSource.clip = wetFootstepClips[randomIndex];
+        } else {
+            int randomIndex = Random.Range(0, footstepClips.Length);
+            footstepSource.clip = footstepClips[randomIndex];
+        }
+        
         
         footstepSource.Play();
     }
@@ -165,6 +173,15 @@ public class Movement : MonoBehaviour
         return Physics2D.OverlapCircle(pos.position, groundSensitivity, groundLayer);
     }
 
+    public void EnteredWater() {
+        speedMod = 0.6f;
+        animator.speed = speedMod;
+    }
+    public void ExitWater() {
+        speedMod = 1;
+        animator.speed = speedMod;
+    }
+
     void FixedUpdate()
     {
         // Count down speed grace if active
@@ -187,16 +204,16 @@ public class Movement : MonoBehaviour
         
         // Check if moving
         if (moveDir.x != 0) {
-            newVelocity.x = rb.linearVelocity.x + (moveDir.x * accel);
+            newVelocity.x = rb.linearVelocity.x + (moveDir.x * accel * speedMod);
             if (graceTime > 0) {
                 newVelocity.x = Mathf.Clamp(newVelocity.x, 
-                Mathf.Min(-topSpeed, (rb.linearVelocity.x)), 
-                Mathf.Max(topSpeed, (rb.linearVelocity.x))
+                Mathf.Min(-topSpeed * speedMod, (rb.linearVelocity.x * speedMod)), 
+                Mathf.Max(topSpeed * speedMod, (rb.linearVelocity.x * speedMod))
                 );
             } else {
                 newVelocity.x = Mathf.Clamp(newVelocity.x, 
-                Mathf.Min(-topSpeed, (rb.linearVelocity.x * decayMod)), 
-                Mathf.Max(topSpeed, (rb.linearVelocity.x * decayMod))
+                Mathf.Min(-topSpeed * speedMod, (rb.linearVelocity.x * decayMod * speedMod)), 
+                Mathf.Max(topSpeed * speedMod, (rb.linearVelocity.x * decayMod * speedMod))
                 );
             }
 

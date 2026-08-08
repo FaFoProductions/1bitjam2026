@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
         health -= damage;
         Debug.Log("The players health is: " + health);
         if (health <= 0) { 
-            Destroy(gameObject);
+            GameManagerSingleton.Instance.RespawnPlayer();
         }
     }
 }
