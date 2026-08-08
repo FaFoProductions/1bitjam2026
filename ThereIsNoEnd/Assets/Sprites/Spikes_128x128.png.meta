@@ -106,8 +106,8 @@ TextureImporter:
       name: Spikes_128x128_0
       rect:
         serializedVersion: 2
-        x: 128
-        y: 192
+        x: 0
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -115,7 +115,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -23, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: 23}
+        - {x: -1, y: 5}
       tessellationDetail: 0
       bones: []
       spriteID: 8daaf0f2a8052e5b0800000000000000
@@ -128,8 +132,8 @@ TextureImporter:
       name: Spikes_128x128_1
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
+        x: 128
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -137,7 +141,12 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 32, y: -4}
+        - {x: 32, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 1, y: -32}
       tessellationDetail: 0
       bones: []
       spriteID: c74c2bb6ae79d38f0800000000000000
@@ -150,8 +159,8 @@ TextureImporter:
       name: Spikes_128x128_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
+        x: 192
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -159,7 +168,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 32, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -9}
+        - {x: 32, y: -9}
       tessellationDetail: 0
       bones: []
       spriteID: 4efd3e8a42fb6bd41b1bbc3ad37c62a5
@@ -172,8 +185,8 @@ TextureImporter:
       name: Spikes_128x128_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 128
+        x: 256
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -181,7 +194,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 32, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -9}
+        - {x: 32, y: -9}
       tessellationDetail: 0
       bones: []
       spriteID: bbf72cd6eba7bf94f943d3cc87799c00
@@ -194,8 +211,8 @@ TextureImporter:
       name: Spikes_128x128_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 320
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -203,7 +220,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 32, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -9}
+        - {x: 32, y: -9}
       tessellationDetail: 0
       bones: []
       spriteID: 59f3f8e22d6b7404b96f178e3cd72cbd
@@ -216,8 +237,8 @@ TextureImporter:
       name: Spikes_128x128_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 384
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -226,10 +247,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 32, y: -2}
-        - {x: -32, y: -2}
-        - {x: -32, y: -32}
-        - {x: 32, y: -32}
+      - - {x: 32, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -9}
+        - {x: 32, y: -9}
       tessellationDetail: 0
       bones: []
       spriteID: c715d14454f8e6546b63bcc2b44fcca4
@@ -242,8 +263,8 @@ TextureImporter:
       name: Spikes_128x128_6
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
+        x: 448
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -252,9 +273,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 32, y: -2}
-        - {x: -32, y: -2}
-        - {x: -32, y: -32}
+      - - {x: 32, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -4}
+        - {x: -2, y: -32}
         - {x: 32, y: -32}
       tessellationDetail: 0
       bones: []
@@ -268,8 +290,8 @@ TextureImporter:
       name: Spikes_128x128_7
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
+        x: 128
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -278,10 +300,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 32, y: -2}
-        - {x: -32, y: -2}
+      - - {x: 1, y: 32}
+        - {x: -32, y: 32}
         - {x: -32, y: -32}
-        - {x: 32, y: -32}
+        - {x: 0, y: -32}
       tessellationDetail: 0
       bones: []
       spriteID: ecd2edc65a8eb7545a0b75b9a7a819b2
@@ -294,8 +316,8 @@ TextureImporter:
       name: Spikes_128x128_8
       rect:
         serializedVersion: 2
-        x: 256
-        y: 64
+        x: 448
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -304,9 +326,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 32, y: -2}
-        - {x: -32, y: -2}
-        - {x: -32, y: -32}
+      - - {x: 32, y: 32}
+        - {x: -7, y: 32}
+        - {x: -7, y: -32}
         - {x: 32, y: -32}
       tessellationDetail: 0
       bones: []
@@ -320,8 +342,8 @@ TextureImporter:
       name: Spikes_128x128_9
       rect:
         serializedVersion: 2
-        x: 320
-        y: 64
+        x: 64
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -329,7 +351,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 32, y: 24}
+        - {x: 32, y: 32}
+        - {x: 24, y: 32}
+        - {x: 5, y: 1}
       tessellationDetail: 0
       bones: []
       spriteID: 075063a1b0e52e749806c2c6a3b47cc4
@@ -342,8 +368,8 @@ TextureImporter:
       name: Spikes_128x128_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -351,7 +377,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 1, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 0, y: -32}
       tessellationDetail: 0
       bones: []
       spriteID: bed43fd4af3601849ababb99d96bcb11
@@ -364,8 +394,8 @@ TextureImporter:
       name: Spikes_128x128_11
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 448
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -373,7 +403,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 32, y: 32}
+        - {x: -7, y: 32}
+        - {x: -7, y: -32}
+        - {x: 32, y: -32}
       tessellationDetail: 0
       bones: []
       spriteID: 8eb511e44edc47d42b94f87f5e81a733
@@ -387,7 +421,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -395,7 +429,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 1, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 0, y: -32}
       tessellationDetail: 0
       bones: []
       spriteID: 52eb147e5c6444b44ad3eb4a0772cae3
@@ -408,8 +446,8 @@ TextureImporter:
       name: Spikes_128x128_13
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
+        x: 256
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -417,7 +455,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -5, y: -1}
+        - {x: -32, y: -24}
+        - {x: -32, y: -32}
+        - {x: -24, y: -32}
       tessellationDetail: 0
       bones: []
       spriteID: 3f80dbe7ab60ffc4780108643184f0f7
@@ -430,8 +472,8 @@ TextureImporter:
       name: Spikes_128x128_14
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
+        x: 448
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -439,7 +481,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 32, y: 32}
+        - {x: -7, y: 32}
+        - {x: -7, y: -32}
+        - {x: 32, y: -32}
       tessellationDetail: 0
       bones: []
       spriteID: 41f3c3137601d2241bc805fc3622b9a0
@@ -452,6 +498,163 @@ TextureImporter:
       name: Spikes_128x128_15
       rect:
         serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 1, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 0, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d65d4773ca46214c95f62f7d7545c1f
+      internalID: 1079077242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_128x128_16
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 32, y: 32}
+        - {x: -7, y: 32}
+        - {x: -7, y: -32}
+        - {x: 32, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65941fb0c3f685c45b2cbecd77b1b4c0
+      internalID: 1984137204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_128x128_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 32, y: -24}
+        - {x: 1, y: -5}
+        - {x: 24, y: -32}
+        - {x: 32, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bffe0e10cd74a1b47865133a1be5fb96
+      internalID: -880129743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_128x128_18
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 32, y: 8}
+        - {x: 4, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060cea9f65efc0c498dece5dae98e86a
+      internalID: -257412831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_128x128_19
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 32, y: 7}
+        - {x: -32, y: 7}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f3be172377b55340a9eea95983ab0f0
+      internalID: 740199046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_128x128_20
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 32, y: 7}
+        - {x: -32, y: 7}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0af3b71a0118e8c43a61eba1a3ae851c
+      internalID: 457741069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_128x128_21
+      rect:
+        serializedVersion: 2
         x: 320
         y: 0
         width: 64
@@ -461,11 +664,68 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 32, y: 7}
+        - {x: -32, y: 7}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
       tessellationDetail: 0
       bones: []
-      spriteID: 8d65d4773ca46214c95f62f7d7545c1f
-      internalID: 1079077242
+      spriteID: 925d0e421799188439ab24795abfb916
+      internalID: 279051646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_128x128_22
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 32, y: 7}
+        - {x: -32, y: 7}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 465313aea65467244be6c4ab89b9ce16
+      internalID: -1150797774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spikes_128x128_23
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 32, y: 32}
+        - {x: -7, y: 32}
+        - {x: -32, y: 8}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0867340ffc7c904ab7d2c2d2b168a2a
+      internalID: -2091530586
       vertices: []
       indices: 
       edges: []
@@ -494,7 +754,15 @@ TextureImporter:
       Spikes_128x128_13: 970964773
       Spikes_128x128_14: 499115229
       Spikes_128x128_15: 1079077242
+      Spikes_128x128_16: 1984137204
+      Spikes_128x128_17: -880129743
+      Spikes_128x128_18: -257412831
+      Spikes_128x128_19: 740199046
       Spikes_128x128_2: -149651984
+      Spikes_128x128_20: 457741069
+      Spikes_128x128_21: 279051646
+      Spikes_128x128_22: -1150797774
+      Spikes_128x128_23: -2091530586
       Spikes_128x128_3: 1466589778
       Spikes_128x128_4: 640356111
       Spikes_128x128_5: 920223916
