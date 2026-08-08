@@ -37,27 +37,27 @@ public class MonsterMovement : MonoBehaviour
             // We need to look at the player
             if (transform.position.x < playerTransform.position.x)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(1, 1, 1);
             } else
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(-1, 1, 1);
             }
         } else {
             if(patrolDestination == 0)
             {
                 transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, moveSpeed * Time.deltaTime);
-                if(Vector2.Distance(transform.position, patrolPoints[0].position) < .5f)
+                if(Vector2.Distance(transform.position, patrolPoints[0].position) < 0.5f)
                 {
-                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                    transform.localScale = new Vector3(-1, 1, 1);
                     patrolDestination = 1;
                 }
             }
             if (patrolDestination == 1)
             {
                 transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, moveSpeed * Time.deltaTime);
-                if (Vector2.Distance(transform.position, patrolPoints[1].position) < .5f)
+                if (Vector2.Distance(transform.position, patrolPoints[1].position) < 0.5f)
                 {
-                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                    transform.localScale = new Vector3(1, 1, 1);
                     patrolDestination = 0;
                 }
             }
