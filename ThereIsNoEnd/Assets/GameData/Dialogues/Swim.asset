@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Swim
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   characterName: Ralph the rat
-  characterSprite: {fileID: 0}
+  characterSprite: {fileID: -180299653560473758, guid: 8bd9f98cb04fb074888e12a0642d721e, type: 3}
   dialogue:
   - "\xABAye, these boots are too big by far! Have them for yourself.\xBB You can
     now wade through the yucky sewer water! \r\n"

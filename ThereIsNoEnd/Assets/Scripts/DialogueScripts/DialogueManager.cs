@@ -2,6 +2,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private GameObject characterName;
     [SerializeField] private GameObject dialogueObj;
+    [SerializeField] private GameObject sprite;
 
     private float timer;
 
@@ -34,6 +36,7 @@ public class DialogueManager : MonoBehaviour
         i = 0;
         characterName.GetComponent<TextMeshProUGUI>().text = dialogue.characterName;
         localDialogue = dialogue.dialogue;
+        sprite.GetComponent<Image>().sprite = dialogue.characterSprite;
         LoadNextLine();
     }
 

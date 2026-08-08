@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyApproaches
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   characterName: Ralph the rat
-  characterSprite: {fileID: 0}
+  characterSprite: {fileID: -180299653560473758, guid: 8bd9f98cb04fb074888e12a0642d721e, type: 3}
   dialogue:
   - "\xABNow lass, that's a problem right there, see? Try jumping on it to splatter
     it.\xBB"
