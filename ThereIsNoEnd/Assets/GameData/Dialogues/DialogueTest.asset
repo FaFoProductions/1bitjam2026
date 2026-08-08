@@ -15,7 +15,13 @@ MonoBehaviour:
   characterName: Ttest
   characterSprite: {fileID: -1516387744112839604, guid: a8bfe0ad76671cd43956f64dc5565d9f, type: 3}
   dialogue:
-  - Hellohello
+  - Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello
+    Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello
+    Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello
+    Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello
+    Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello
+    Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello
+    Hellohello Hellohello Hellohello Hellohello Hellohello Hellohello
   - This a test
   - Fun times
   - Goodbye
