@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform leftWallPos;
     [SerializeField] Transform rightWallPos;
 
-    [Header("Animation settings")]
+    [Header("Animation Settings")]
     [SerializeField] public Animator animator;
     [SerializeField] private AudioClip[] footstepClips;
     [SerializeField] private AudioClip[] wetFootstepClips;
@@ -22,6 +22,11 @@ public class Movement : MonoBehaviour
     [SerializeField] AudioSource footstepSource;
     [SerializeField] AudioSource dashSource;
     [SerializeField] AudioSource floatSource;
+
+    [Header("Particle Settings")]
+    [SerializeField] GameObject dashParticlePrefab;
+    [SerializeField] GameObject jumpParticlePrefab;
+    [SerializeField] Transform jumpParticlePos;
 
     [Header("Movement Settings")]
     public float topSpeed = 5f;
@@ -44,6 +49,7 @@ public class Movement : MonoBehaviour
     private bool jump;
     private bool glide;
     private bool dash;
+    private bool dashAvailable = true;
     private bool glideSoundPlayed = false;
     
     void Awake()
@@ -146,6 +152,15 @@ public class Movement : MonoBehaviour
         dashSource.Play();
     }
 
+    public void PlayJumpParticles(Transform t) {
+        Instantiate(jumpParticlePrefab, t.position, Quaternion.Euler(90,0,0));
+    }
+
+    public void PlayDashParticles(Transform t, Vector2 moveDir) {
+        GameObject dashParticle = Instantiate(dashParticlePrefab, t.position, Quaternion.Euler(0,90 * Mathf.Sign(moveDir.x) * -1,0));
+        dashParticle.GetComponent<ParticleSystem>().startSpeed = dashforce * 0.5f;
+    }
+
     private bool isGrounded(Transform pos) {
         return Physics2D.OverlapCircle(pos.position, groundSensitivity, groundLayer);
     }
@@ -159,6 +174,7 @@ public class Movement : MonoBehaviour
 
         // Check if on ground
         grounded = isGrounded(groundPos);
+        if (grounded) {dashAvailable = true;}
 
         // Check if on wall
         walledLeft = isGrounded(leftWallPos);
@@ -198,11 +214,14 @@ public class Movement : MonoBehaviour
                 // Walljump from wall on the left
                 newVelocity.x = jumpforce * wallJumpMod;
                 graceTime = highSpeedGraceTimeInS;
-
+                PlayJumpParticles(leftWallPos);
             } else if (!grounded && walledRight) {
                 // Walljump from wall on the right
                 newVelocity.x = -(jumpforce * wallJumpMod);
                 graceTime = highSpeedGraceTimeInS;
+                PlayJumpParticles(rightWallPos);
+            } else if (grounded) {
+                PlayJumpParticles(jumpParticlePos);
             }
             // Normal jump
             newVelocity.y = jumpforce;
@@ -210,10 +229,18 @@ public class Movement : MonoBehaviour
             jump = false;
         }
 
-        if (dash) {
-            newVelocity.x = dashforce * Mathf.Sign(rb.linearVelocity.x);
+        if (dash && dashAvailable) {
+            if (moveDir.x != 0) {
+                newVelocity.x = dashforce * Mathf.Sign(moveDir.x);
+                dashAvailable = false;
+                PlayDashSound();
+                if (Mathf.Sign(moveDir.x) > 0) {
+                    PlayDashParticles(leftWallPos, moveDir);
+                } else if (Mathf.Sign(moveDir.x) < 0) {
+                    PlayDashParticles(rightWallPos, moveDir);
+                }
+            }
             dash = false;
-            PlayDashSound();
         }
 
         if (glide) {

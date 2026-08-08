@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7326562982824979742}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5600702151068912340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2876895286526978364}
+  m_Layer: 0
+  m_Name: JumpSystemPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2876895286526978364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600702151068912340}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.643, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7326562982824979742}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5747915450079549411
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +293,7 @@ Transform:
   - {fileID: 5536127384085245947}
   - {fileID: 8062473303478514738}
   - {fileID: 1428141830554125097}
+  - {fileID: 2876895286526978364}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7488170491376124473
@@ -361,6 +393,9 @@ MonoBehaviour:
   footstepSource: {fileID: 1793980505437932634}
   dashSource: {fileID: 6745413919712752795}
   floatSource: {fileID: 5275364946041769277}
+  dashParticlePrefab: {fileID: 2146359311827008296, guid: b49da7811f314f0ec849d283fd60646d, type: 3}
+  jumpParticlePrefab: {fileID: 2146359311827008296, guid: 16669e24ec838788caf889ffe85fe48e, type: 3}
+  jumpParticlePos: {fileID: 2876895286526978364}
   topSpeed: 3
   horDrag: 0.9
   accel: 1
