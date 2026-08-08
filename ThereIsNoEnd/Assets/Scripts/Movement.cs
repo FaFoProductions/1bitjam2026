@@ -267,15 +267,17 @@ public class Movement : MonoBehaviour
             jump = false;
         }
 
-        if (dash && dashAvailable) {
-            if (moveDir.x != 0) {
-                newVelocity.x = dashforce * Mathf.Sign(moveDir.x);
-                dashAvailable = false;
-                PlayDashSound();
-                if (Mathf.Sign(moveDir.x) > 0) {
-                    PlayDashParticles(leftWallPos, moveDir);
-                } else if (Mathf.Sign(moveDir.x) < 0) {
-                    PlayDashParticles(rightWallPos, moveDir);
+        if (dash) {
+            if (dashAvailable && canGoDash) {
+                if (moveDir.x != 0) {
+                    newVelocity.x = dashforce * Mathf.Sign(moveDir.x);
+                    dashAvailable = false;
+                    PlayDashSound();
+                    if (Mathf.Sign(moveDir.x) > 0) {
+                        PlayDashParticles(leftWallPos, moveDir);
+                    } else if (Mathf.Sign(moveDir.x) < 0) {
+                        PlayDashParticles(rightWallPos, moveDir);
+                    }
                 }
             }
             dash = false;
