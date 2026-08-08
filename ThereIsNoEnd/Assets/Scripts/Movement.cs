@@ -16,6 +16,9 @@ public class Movement : MonoBehaviour
     [SerializeField] public Animator animator;
     [SerializeField] private AudioClip[] footstepClips;
     [SerializeField] private AudioClip[] wetFootstepClips;
+    [SerializeField] private AudioClip[] takingDamageClips;
+    [SerializeField] private AudioClip spikeSound;
+    [SerializeField] private AudioClip doingDamageSound;
     [SerializeField] private AudioClip jumpingSound;
     [SerializeField] private AudioClip floatSound;
     [SerializeField] private AudioClip dashSound;
@@ -156,6 +159,21 @@ public class Movement : MonoBehaviour
     public void PlayDashSound()
     {
         dashSource.clip = dashSound;
+        
+        dashSource.Play();
+    }
+
+    public void PlayTakingDamage() {
+        int randomIndex = Random.Range(0, takingDamageClips.Length);
+        dashSource.clip = takingDamageClips[randomIndex];
+    }
+    public void PlayDoingDamage() {
+        dashSource.clip = doingDamageSound;
+        
+        dashSource.Play();
+    }
+    public void PlaySpikeDamage() {
+        dashSource.clip = spikeSound;
         
         dashSource.Play();
     }

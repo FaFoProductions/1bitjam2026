@@ -459,6 +459,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dfd24fb185ca50dbe9811e4ca8b50963, type: 3}
   - {fileID: 8300000, guid: 06301bc82c9164c1cb1d9a0d86c81546, type: 3}
   - {fileID: 8300000, guid: 1892ff06554ab5c439ab3e2dbee593a3, type: 3}
+  takingDamageClips:
+  - {fileID: 8300000, guid: 40f4f2a3771675994815be392cac9c46, type: 3}
+  - {fileID: 8300000, guid: f5821fee793365aa8afc389cb1658364, type: 3}
+  - {fileID: 8300000, guid: 35d3ce122787d3a329e041de52518196, type: 3}
+  - {fileID: 8300000, guid: 0fbbe592148a178f38d4855b077d04c1, type: 3}
+  spikeSound: {fileID: 8300000, guid: 5c23fb3b4967b4f2ca4a15a0e8e356f9, type: 3}
+  doingDamageSound: {fileID: 8300000, guid: 93d4ec9aea6fd7f09bf841f4cef14f58, type: 3}
   jumpingSound: {fileID: 8300000, guid: 0c7a6872e8f8233d983de4fec4a13032, type: 3}
   floatSound: {fileID: 8300000, guid: d1fc74330c1723532b8380c0968947ec, type: 3}
   dashSound: {fileID: 8300000, guid: d95e429a4698bf36d851f4c2a66c94eb, type: 3}
