@@ -211,8 +211,8 @@ MonoBehaviour:
   groundPos: {fileID: 387784036690265174}
   leftWallPos: {fileID: 6959146398139244931}
   rightWallPos: {fileID: 6791344005822216948}
-  footstepClips: []
-  wetFootstepClips:
+  animator: {fileID: 5593249410636357515}
+  footstepClips:
   - {fileID: 8300000, guid: b02ccbe5a594f1aea9110a9e81f4cdbf, type: 3}
   - {fileID: 8300000, guid: 2f668c34842ad8352a34e4abc7f73f3a, type: 3}
   - {fileID: 8300000, guid: 6026c03adcb0dad998816355cc5860d6, type: 3}
@@ -223,6 +223,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6364d9551b7fe669ca49dc8d9c651032, type: 3}
   - {fileID: 8300000, guid: 114bb9cb09ba6b37a89da9f254474462, type: 3}
   - {fileID: 8300000, guid: 0a77e1748feb2318d9579987750ca7d7, type: 3}
+  wetFootstepClips: []
+  jumpingSound: {fileID: 8300000, guid: 0c7a6872e8f8233d983de4fec4a13032, type: 3}
+  floatSound: {fileID: 8300000, guid: d95e429a4698bf36d851f4c2a66c94eb, type: 3}
   footstepSource: {fileID: 1793980505437932634}
   topSpeed: 3
   horDrag: 0.9

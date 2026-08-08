@@ -998,6 +998,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4672767296165934017, guid: 0ffa494feb4bd9cc1a9211b4d842f799, type: 3}
+      propertyPath: floatSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e25788c943b12648bc817815d2c1167, type: 3}
+    - target: {fileID: 4672767296165934017, guid: 0ffa494feb4bd9cc1a9211b4d842f799, type: 3}
       propertyPath: wallJumpMod
       value: 1
       objectReference: {fileID: 0}
