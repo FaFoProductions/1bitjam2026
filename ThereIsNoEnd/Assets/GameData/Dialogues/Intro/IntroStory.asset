@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6fa94bb309507e47a9fc6a1fa9a0ae8, type: 3}
+  m_Name: IntroStory
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  characterName: Narrator
+  characterSprite: {fileID: 289650589630035348, guid: 702281db48532ce868ae956e0f0e1956, type: 3}
+  dialogue:
+  - Little Hilda went for a walk
+  - 'Down the drain went her dog
+
+'
+  - 'And all the kings rats and all the kings power
+
+'
+  - Could not hold her from her dog

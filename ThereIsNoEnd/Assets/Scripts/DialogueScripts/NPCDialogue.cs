@@ -14,10 +14,17 @@ public class NPCDialogue : MonoBehaviour
      [SerializeField] public GameObject alertBubble;
 
 
-    void Start()
+    public void DialogueStart()
     {
-        
-        
+        dialogbox.SetActive(true);
+        alertBubble.SetActive(false);
+        DialogueManager.Instance.PlayDialogue(dialogue);
+    }
+
+    public void DialogueStop() {
+        Debug.Log("Dialog start");
+        dialogbox.SetActive(false);
+        alertBubble.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,10 +32,8 @@ public class NPCDialogue : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             Debug.Log("Entered trigger");
-            dialogbox.SetActive(true);
-            alertBubble.SetActive(false);
-            DialogueManager.Instance.PlayDialogue(dialogue);
-            player = collision.gameObject.GetComponent<Transform>();
+            DialogueStart();
+            //player = collision.gameObject.GetComponent<Transform>();
         }
     }
 
@@ -36,11 +41,15 @@ public class NPCDialogue : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-        
-            dialogbox.SetActive(false);
-            alertBubble.SetActive(true);
-
+            DialogueStop();
         }
+    }
+
+    // The function must be public and take 0 or 1 parameters
+    public void TriggerTimelineAction()
+    {
+        Debug.Log("The Unity Timeline just triggered this script!");
+        // Add your custom gameplay logic here (e.g., spawn enemies, change UI)
     }
 }
 
