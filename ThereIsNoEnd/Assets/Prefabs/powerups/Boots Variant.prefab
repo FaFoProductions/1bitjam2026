@@ -53,12 +53,16 @@ PrefabInstance:
       value: Boots Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7314129895434913972, guid: 51f28ea225343e646b36be6b6842637e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -882300928967109625, guid: 412ff878f5e76c547a77d78b1c4c3688, type: 3}
+    - target: {fileID: 7314129895434913972, guid: 51f28ea225343e646b36be6b6842637e, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314129895434913972, guid: 51f28ea225343e646b36be6b6842637e, type: 3}
       propertyPath: m_Color.g
-      value: 0.9920025
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314129895434913972, guid: 51f28ea225343e646b36be6b6842637e, type: 3}
       propertyPath: m_Color.r

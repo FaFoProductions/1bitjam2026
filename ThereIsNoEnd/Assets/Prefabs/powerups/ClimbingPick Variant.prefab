@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3619464533834601723, guid: 51f28ea225343e646b36be6b6842637e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.486918
+      value: -6.486918
       objectReference: {fileID: 0}
     - target: {fileID: 3619464533834601723, guid: 51f28ea225343e646b36be6b6842637e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -51,6 +51,22 @@ PrefabInstance:
     - target: {fileID: 7139286425768381985, guid: 51f28ea225343e646b36be6b6842637e, type: 3}
       propertyPath: m_Name
       value: ClimbingPick Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314129895434913972, guid: 51f28ea225343e646b36be6b6842637e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2031261202017679683, guid: 412ff878f5e76c547a77d78b1c4c3688, type: 3}
+    - target: {fileID: 7314129895434913972, guid: 51f28ea225343e646b36be6b6842637e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314129895434913972, guid: 51f28ea225343e646b36be6b6842637e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314129895434913972, guid: 51f28ea225343e646b36be6b6842637e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

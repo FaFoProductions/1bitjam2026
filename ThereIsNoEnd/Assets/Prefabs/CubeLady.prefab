@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 812141241740025331}
   - component: {fileID: 8717292772650610521}
   - component: {fileID: 5593249410636357515}
+  - component: {fileID: 2150475590468612972}
   m_Layer: 7
   m_Name: CubeLady
   m_TagString: Untagged
@@ -360,6 +361,7 @@ Transform:
   - {fileID: 8062473303478514738}
   - {fileID: 1428141830554125097}
   - {fileID: 1434210188910507652}
+  - {fileID: 2876895286526978364}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7488170491376124473
@@ -564,6 +566,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2150475590468612972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7210698098533354611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aedd34b95db2bc4988e6c61188ccb52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 10
+  health: 0
 --- !u!1 &7614401696295657290
 GameObject:
   m_ObjectHideFlags: 0

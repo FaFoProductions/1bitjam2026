@@ -14,7 +14,7 @@ public class MonsterDamage : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Player takes damage");
-            //playerHealth.TakeDamage(damage);
+            playerHealth.TakeDamage(damage);
             KnockBackPlayer();
         }
     }
