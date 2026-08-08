@@ -7,11 +7,16 @@ public class MonsterMovement : MonoBehaviour
     public float moveSpeed;
     public int patrolDestination; // the patrolpoint the monster is currently moving towards
 
-    public Transform playerTransform;
+    private Transform playerTransform;
     public bool isChaching;
     public float chaseDistance;
 
     public int playerLayerMask;
+
+
+    private void Start() {
+        playerTransform = GameObject.FindWithTag("Player").transform;
+    }
 
     private void Update()
     {

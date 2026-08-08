@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour
     [SerializeField] AudioSource footstepSource;
     [SerializeField] AudioSource dashSource;
     [SerializeField] AudioSource floatSource;
+    [SerializeField] public float dashAnimLength;
 
     [Header("Particle Settings")]
     [SerializeField] GameObject dashParticlePrefab;
@@ -47,19 +48,22 @@ public class Movement : MonoBehaviour
     public int airJumps = 0;
     public float wallJumpMod;
     public float floatEffect = 0.2f;
+    public float climbEffect = 0.6f;
     public bool inWater = false;
+    public bool canGoWater = false;
+    public bool canGoFloat = false;
+    public bool canGoDash = false;
+    public int maxAirJumps = 0;
+    public bool canGoClimb = false;
     private float graceTime;
+    private float dashTime;
     private bool jump;
     private bool glide;
     private bool dash;
     private bool dashAvailable = true;
     private bool glideSoundPlayed = false;
     private float speedMod = 1;
-    public bool canGoWater = false;
-    public bool canGoFloat = false;
-    public bool canGoDash = false;
-    public int maxAirJumps = 0;
-    public bool canGoClimb = false;
+    private bool gliding = false;
     
     void Awake()
     {
@@ -116,6 +120,9 @@ public class Movement : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             dash = true;
+            if (canGoDash) {
+                dashTime = dashAnimLength;
+            }
         }
     }
 
@@ -123,6 +130,11 @@ public class Movement : MonoBehaviour
         animator.SetFloat("xSpeed", Mathf.Abs(dir.x));
         animator.SetFloat("ySpeed", Mathf.Abs(dir.y));
         animator.SetBool("isGrounded", grounded);
+        animator.SetBool("walledLeft", walledLeft);
+        animator.SetBool("walledRight", walledRight);
+        animator.SetBool("dashing", (dashTime > 0));
+        animator.SetBool("gliding", gliding);
+
         if (Mathf.Sign(dir.y) >= 0) {
             animator.SetBool("ySpeedIsUp", true);
         } else {
@@ -210,6 +222,10 @@ public class Movement : MonoBehaviour
             graceTime -= Time.deltaTime;
         }
 
+        if (dashTime > 0) {
+            dashTime -= Time.deltaTime;
+        }
+
         // Check if on ground
         grounded = isGrounded(groundPos);
         if (grounded) {dashAvailable = true;}
@@ -218,7 +234,7 @@ public class Movement : MonoBehaviour
         walledLeft = isGrounded(leftWallPos);
         walledRight = isGrounded(rightWallPos);
 
-        if (grounded || walledLeft || walledRight) {airJumps = maxAirJumps;}
+        if (grounded || ((walledLeft || walledRight) && canGoClimb)) {airJumps = maxAirJumps;}
 
         // Velocity is previous velocity + the new input to a maximum in any given direction
         Vector2 newVelocity = rb.linearVelocity;
@@ -248,22 +264,32 @@ public class Movement : MonoBehaviour
         }
 
         if (jump) {
-            if (!grounded && walledLeft) {
+            if (!grounded && walledLeft && canGoClimb) {
                 // Walljump from wall on the left
                 newVelocity.x = jumpforce * wallJumpMod;
                 graceTime = highSpeedGraceTimeInS;
                 PlayJumpParticles(leftWallPos);
-            } else if (!grounded && walledRight) {
+                // Normal jump
+                newVelocity.y = jumpforce;
+                PlayJumpingSound();
+            } else if (!grounded && walledRight && canGoClimb) {
                 // Walljump from wall on the right
                 newVelocity.x = -(jumpforce * wallJumpMod);
                 graceTime = highSpeedGraceTimeInS;
                 PlayJumpParticles(rightWallPos);
+                // Normal jump
+                newVelocity.y = jumpforce;
+                PlayJumpingSound();
             } else if (grounded) {
                 PlayJumpParticles(jumpParticlePos);
+                // Normal jump
+                newVelocity.y = jumpforce;
+                PlayJumpingSound();
+            } else if (airJumps > 0) {
+                // Normal jump
+                newVelocity.y = jumpforce;
+                PlayJumpingSound();
             }
-            // Normal jump
-            newVelocity.y = jumpforce;
-            PlayJumpingSound();
             jump = false;
         }
 
@@ -284,22 +310,38 @@ public class Movement : MonoBehaviour
         }
 
         if (glide) {
-            newVelocity.y = Mathf.Clamp(newVelocity.y, -floatEffect, jumpforce);
-            if (Mathf.Sign(newVelocity.y) < 0) {
-                if (glideSoundPlayed == false) {
-                    PlayFloatSound();
-                    glideSoundPlayed = true;
+            if (canGoFloat) {
+                newVelocity.y = Mathf.Clamp(newVelocity.y, -floatEffect, jumpforce);
+                if (Mathf.Sign(newVelocity.y) < 0) {
+                    if (glideSoundPlayed == false) {
+                        PlayFloatSound();
+                        glideSoundPlayed = true;
+                    }
+                    gliding = true;
+                } else {
+                    gliding = false;
                 }
             }
+        } else if ((walledLeft || walledRight) && canGoClimb) {
+            newVelocity.y = Mathf.Clamp(newVelocity.y, -climbEffect, jumpforce);
         }
 
         UpdateAnimVariables(newVelocity.normalized);
+        
 
-        // Flip sprite if new movement is to the left instead of default (right)
-        if (newVelocity.x < 0) {
-            GetComponent<SpriteRenderer>().flipX = true;
-        } else if (newVelocity.x > 0){
-            GetComponent<SpriteRenderer>().flipX = false;
+        // Flip sprite if new movement is to the left instead of default (right) or for wall scenario
+        if ((walledLeft || walledRight) && !grounded) {
+            if (walledRight) {
+                GetComponent<SpriteRenderer>().flipX = true;
+            } else if (walledLeft) {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+        } else {
+            if (newVelocity.x < 0) {
+                GetComponent<SpriteRenderer>().flipX = true;
+            } else if (newVelocity.x > 0){
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
         }
 
 
