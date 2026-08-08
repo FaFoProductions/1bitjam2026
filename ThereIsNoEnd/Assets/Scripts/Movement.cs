@@ -13,10 +13,12 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform rightWallPos;
 
     [Header("Animation settings")]
+    private Animator animator;
+    [SerializeField] private AudioClip[] footstepClips;
+    [SerializeField] private AudioClip[] wetFootstepClips;
+    [SerializeField] AudioSource footstepSource;
     private float ySpeed = 0f;
     private float xSpeed = 0f;
-
-
 
     [Header("Movement Settings")]
     public float topSpeed = 5f;
@@ -34,17 +36,16 @@ public class Movement : MonoBehaviour
     public int maxAirJumps = 0;
     public int airJumps = 0;
     public float wallJumpMod;
-    // Float effect lower value is more floaty
     public float floatEffect = 0.2f;
     private float graceTime;
     private bool jump;
     private bool glide;
     private bool dash;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     
     void Start()
@@ -96,6 +97,19 @@ public class Movement : MonoBehaviour
         {
             dash = true;
         }
+    }
+
+    void UpdateAnimVariables(Vector2 dir) {
+        animator.SetFloat("xSpeed", dir.x);
+        animator.SetFloat("ySpeed", dir.y);
+    }
+
+    public void PlayFootstepSound()
+    {
+        int randomIndex = Random.Range(0, footstepClips.Length);
+        footstepSource.clip = footstepClips[randomIndex];
+        
+        footstepSource.Play();
     }
 
     private bool isGrounded(Transform pos) {
@@ -169,6 +183,16 @@ public class Movement : MonoBehaviour
         if (glide) {
             newVelocity.y = Mathf.Clamp(newVelocity.y, -floatEffect, jumpforce);
         }
+
+        UpdateAnimVariables(newVelocity.normalized);
+
+        // Flip sprite if new movement is to the left instead of default (right)
+        if (newVelocity.x < 0) {
+            GetComponent<SpriteRenderer>().flipX = true;
+        } else if (newVelocity.x > 0){
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+
 
         rb.linearVelocity = newVelocity;
     }
