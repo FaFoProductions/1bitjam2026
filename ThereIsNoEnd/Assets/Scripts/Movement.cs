@@ -105,7 +105,7 @@ public class Movement : MonoBehaviour
     }
 
     void UpdateAnimVariables(Vector2 dir) {
-        Debug.Log($"dir: {dir}, grounded: {grounded}");
+        //Debug.Log($"dir: {dir}, grounded: {grounded}");
         animator.SetFloat("xSpeed", Mathf.Abs(dir.x));
         animator.SetFloat("ySpeed", Mathf.Abs(dir.y));
         animator.SetBool("isGrounded", grounded);
