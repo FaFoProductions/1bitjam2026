@@ -105,7 +105,7 @@ public class GameManagerSingleton : MonoBehaviour
             narratorObj.GetComponent<NPCDialogue>().dialogue = thingsToSay[0];
             narratorObj.GetComponent<NPCDialogue>().DialogueStart();
             thingsToSay.RemoveAt(0);
-            float waitTime = DialogueManager.Instance.totalDiaTime;
+            float waitTime = DialogueManager.Instance.totalDiaTime + 1.5f;
             if (waitTime <= 3) {
                 waitTime = 3;
             }
