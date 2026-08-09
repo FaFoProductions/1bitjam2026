@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: b58c78b62d1c7e9639eda0d0a426f305
+guid: 507c962bbf98ea0718edafa6f5286878
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3410980072282864456
-    second: Wall_Hang_And_Air_Dash_128x128_0
-  - first:
-      213: -5220268706590011689
-    second: Wall_Hang_And_Air_Dash_128x128_1
+      213: -1787910958517845284
+    second: Floating__0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -116,45 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wall_Hang_And_Air_Dash_128x128_0
+      name: Floating__0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8b4c4a742b3c9a0d0800000000000000
-      internalID: -3410980072282864456
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wall_Hang_And_Air_Dash_128x128_1
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
+        height: 214
       alignment: 9
-      pivot: {x: 0.20940173, y: 0.5021368}
+      pivot: {x: 0.6029931, y: 0.35955518}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7de4d9ff441ed87b0800000000000000
-      internalID: -5220268706590011689
+      spriteID: cd2048bb4701037e0800000000000000
+      internalID: -1787910958517845284
       vertices: []
       indices: 
       edges: []
@@ -163,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b7ccb91e82ecfcccca84d17a3a23efb0
+    spriteID: 104216de2a8ed0d3baada3cd4bfd6569
     internalID: 0
     vertices: []
     indices: 
@@ -171,12 +146,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Wall_Hang_And_Air_Dash_128x128_0: -3410980072282864456
-      Wall_Hang_And_Air_Dash_128x128_1: -5220268706590011689
+      Floating__0: -1787910958517845284
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

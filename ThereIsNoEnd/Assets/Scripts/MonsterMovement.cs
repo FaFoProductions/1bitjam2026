@@ -27,13 +27,12 @@ public class MonsterMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dis, chaseDistance);
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
-            Debug.Log("We are chasing!!!");
             isChaching = true;
 
  
         } else
         {
-            Debug.Log("No chase");
+
             isChaching = false;
         }
 

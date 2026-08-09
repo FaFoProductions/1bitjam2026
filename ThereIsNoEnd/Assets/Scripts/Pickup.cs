@@ -13,7 +13,7 @@ public class Pickup : MonoBehaviour
 
     [SerializeField] public Power upgrade;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -22,15 +22,15 @@ public class Pickup : MonoBehaviour
             switch (upgrade)
             {
                 case Power.Swim: playerStats.canGoWater = true;
-                return;
+                break;
                 case Power.Float: playerStats.canGoFloat = true;
-                return;
+                break;
                 case Power.Dash: playerStats.canGoDash = true;
-                return;
+                break;
                 case Power.DoubleJump: playerStats.maxAirJumps = 1;
-                return;
+                break;
                 case Power.Climb: playerStats.canGoClimb = true;
-                return;
+                break;
             }
             Destroy(gameObject);
         }

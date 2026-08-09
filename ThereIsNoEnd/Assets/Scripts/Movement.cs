@@ -103,10 +103,13 @@ public class Movement : MonoBehaviour
     void JumpPerformed(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Started)
         {
-            if (grounded || walledLeft || walledRight || airJumps > 0)
-            {
-                if ((!grounded && !walledLeft && !walledRight) && airJumps > 0 ) {airJumps--;}
+            if (grounded) {
                 jump = true;
+            } else if ((walledLeft && canGoClimb) || (walledRight && canGoClimb)) {
+                jump = true;
+            } else if (airJumps > 0) {
+                jump = true;
+                airJumps--;
             }
         } else if (context.phase == InputActionPhase.Performed) {
             glide = true;
@@ -285,7 +288,7 @@ public class Movement : MonoBehaviour
                 // Normal jump
                 newVelocity.y = jumpforce;
                 PlayJumpingSound();
-            } else if (airJumps > 0) {
+            } else {
                 // Normal jump
                 newVelocity.y = jumpforce;
                 PlayJumpingSound();
@@ -318,12 +321,12 @@ public class Movement : MonoBehaviour
                         glideSoundPlayed = true;
                     }
                     gliding = true;
-                } else {
-                    gliding = false;
                 }
             }
         } else if ((walledLeft || walledRight) && canGoClimb) {
             newVelocity.y = Mathf.Clamp(newVelocity.y, -climbEffect, jumpforce);
+        } else {
+            gliding = false;
         }
 
         UpdateAnimVariables(newVelocity.normalized);
