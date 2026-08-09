@@ -24,7 +24,7 @@ public class RatKingEnemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        sp = GetComponent<SpriteRenderer>();
+        sp = body.GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         playerTransform = GameObject.FindWithTag("Player").transform;
         rollSource.clip = rollSound;

@@ -12,14 +12,37 @@ public class MonsterMovement : MonoBehaviour
     public float chaseDistance;
 
     public int playerLayerMask;
+    public Animator anim;
+    [SerializeField] private MonsterDamage biteScript;
+    public bool bitten;
+    private float biteTimer;
+    private bool ded = false;
 
 
     private void Start() {
         playerTransform = GameObject.FindWithTag("Player").transform;
+        anim = GetComponent<Animator>();
     }
 
-    private void Update()
+
+
+    private void FixedUpdate()
     {
+        if (ded) {return;}
+        if (biteTimer > 0) {
+            biteTimer -= Time.deltaTime;
+        } else if (bitten) {
+            bitten = false;
+        }
+        if (!bitten) {anim.SetBool("Bite", false);}
+            
+        if (biteScript.bite == true && biteTimer <= 0) {
+            bitten = true;
+            anim.SetBool("Bite", true);
+            biteTimer = 0.2f;
+        }
+
+        
         // Can we see the player?
         
         //if (Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
@@ -37,6 +60,7 @@ public class MonsterMovement : MonoBehaviour
         }
 
         if (isChaching) {
+            anim.SetBool("Angry", true);
             transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
             // We need to look at the player
             if (transform.position.x < playerTransform.position.x)
@@ -47,6 +71,7 @@ public class MonsterMovement : MonoBehaviour
                 transform.localScale = new Vector3(-1, 1, 1);
             }
         } else {
+            anim.SetBool("Angry", false);
             if(patrolDestination == 0)
             {
                 transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, moveSpeed * Time.deltaTime);
@@ -70,7 +95,9 @@ public class MonsterMovement : MonoBehaviour
 
     public void DestroyMonster()
     {
-        Destroy(gameObject);
+        anim.SetBool("Ded", true);
+        ded = true;
+        Destroy(gameObject, 2f);
     }
 
 }
