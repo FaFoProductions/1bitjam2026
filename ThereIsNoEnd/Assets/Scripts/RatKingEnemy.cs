@@ -72,7 +72,11 @@ public class RatKingEnemy : MonoBehaviour
             rollingPlaying = false;
         }
 
-
+        if (moveDir.x > 0) {
+            sp.flipX = false;
+        } else if (moveDir.x < 0) {
+            sp.flipX = true;
+        }
         rb.linearVelocity = newVelocity;
     }
 

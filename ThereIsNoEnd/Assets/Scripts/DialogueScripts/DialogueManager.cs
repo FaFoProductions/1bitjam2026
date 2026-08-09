@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject characterName;
     [SerializeField] private GameObject dialogueObj;
     [SerializeField] private GameObject sprite;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip typingSound;
 
     private float timer;
 
@@ -37,27 +39,37 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void Start() {
+        audioSource.clip = typingSound;
+    }
+
     public void PlayDialogue(Dialogue dialogue)
     {
         i = 0;
         characterName.GetComponent<TextMeshProUGUI>().text = dialogue.characterName;
         localDialogue = dialogue.dialogue;
         sprite.GetComponent<Image>().sprite = dialogue.characterSprite;
-        LoadNextLine();
 
         // Calculate total time
         totalDiaTime = 0;
         for (int i = 0; i < localDialogue.Length; i++) {
             totalDiaTime += calcDiaTime(localDialogue[i]);
         }
+        LoadNextLine();
     }
 
     private float calcDiaTime(string s) {
         return s.ToCharArray().Length * waitTime * 1.5f;
     }
 
+    private void StopTyping() {
+        audioSource.Stop();
+    }
+
     private void LoadNextLine()
     {
+        audioSource.Play();
+        Invoke(nameof(StopTyping), (totalDiaTime * 0.75f));
         wordTime = calcDiaTime(localDialogue[i]);
         if (wordTime < 3)
         {
