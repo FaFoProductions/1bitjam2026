@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6fa94bb309507e47a9fc6a1fa9a0ae8, type: 3}
-  m_Name: EnemyApproaches
+  m_Name: SwimSecond
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
-  characterName: Ralph the rat
-  characterSprite: {fileID: -180299653560473758, guid: 8bd9f98cb04fb074888e12a0642d721e, type: 3}
+  characterName: System
+  characterSprite: {fileID: 4654628248124778803, guid: 412ff878f5e76c547a77d78b1c4c3688, type: 3}
   dialogue:
-  - "\xABNow lass, that's a problem right there, see? Try jumping on it to splatter
-    it.\xBB"
+  - 'Item unlocked: Sturdy Sewer Boots'
+  - 'You can now wade through the yucky sewer water! '
