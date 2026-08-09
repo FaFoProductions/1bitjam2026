@@ -97,6 +97,9 @@ public class MonsterMovement : MonoBehaviour
     {
         anim.SetBool("Ded", true);
         ded = true;
+        foreach(BoxCollider2D box in GetComponentsInChildren<BoxCollider2D>()) {
+            Destroy(box);
+        }
         Destroy(gameObject, 2f);
     }
 

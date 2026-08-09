@@ -27,15 +27,15 @@ RectTransform:
   m_GameObject: {fileID: 1510928086789734942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2748721481455010817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -111}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchoredPosition: {x: 176, y: -145}
+  m_SizeDelta: {x: 295.1943, y: 292.4593}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4057723672045033611
 CanvasRenderer:
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -109,10 +109,10 @@ RectTransform:
   - {fileID: 7330657638124259956}
   m_Father: {fileID: 6091656832927944248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 255}
-  m_SizeDelta: {x: -100, y: -790}
+  m_AnchorMin: {x: 0.04127084, y: 0.61200005}
+  m_AnchorMax: {x: 0.97177076, y: 0.8584815}
+  m_AnchoredPosition: {x: -12.5, y: 1}
+  m_SizeDelta: {x: 33, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &438791066956454757
 CanvasRenderer:
@@ -185,10 +185,10 @@ RectTransform:
   - {fileID: 3350374222305675238}
   m_Father: {fileID: 6091656832927944248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -500, y: 450}
-  m_SizeDelta: {x: -1100, y: -1000}
+  m_AnchorMin: {x: 0.029291669, y: 0.88537043}
+  m_AnchorMax: {x: 0.45518753, y: 0.9565186}
+  m_AnchoredPosition: {x: -5, y: -4.5}
+  m_SizeDelta: {x: 2, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3341214417776778840
 CanvasRenderer:
@@ -260,10 +260,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2748721481455010817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 200, y: 0}
-  m_SizeDelta: {x: -440, y: -40}
+  m_AnchorMin: {x: 0.017648352, y: 0.089793116}
+  m_AnchorMax: {x: 0.98200005, y: 0.91710347}
+  m_AnchoredPosition: {x: 200, y: -1}
+  m_SizeDelta: {x: -374, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8053890695778831089
 CanvasRenderer:
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 15.737366, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -500,10 +500,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3681861469487295891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchorMin: {x: 0.57665855, y: 0.5}
+  m_AnchorMax: {x: 0.57665855, y: 0.5}
+  m_AnchoredPosition: {x: -72.5, y: 0}
+  m_SizeDelta: {x: 801, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6461492313985919329
 CanvasRenderer:
@@ -560,14 +560,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 52
+  m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 23.960175, y: 68.327, z: 12.646851, w: 69.5577}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

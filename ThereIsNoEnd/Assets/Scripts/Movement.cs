@@ -58,7 +58,9 @@ public class Movement : MonoBehaviour
     private float graceTime;
     private float dashTime;
     public float coyoteTime = 0.1f;
-    private float coyoteTimer;
+
+    public float coyoteTimer;
+
     private bool jump;
     private bool glide;
     private bool dash;
@@ -105,7 +107,7 @@ public class Movement : MonoBehaviour
     void JumpPerformed(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Started)
         {
-            if (grounded || coyoteTime > 0) {
+            if (grounded || coyoteTimer > 0) {
                 jump = true;
             } else if ((walledLeft && canGoClimb) || (walledRight && canGoClimb)) {
                 jump = true;
@@ -125,6 +127,7 @@ public class Movement : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             dash = true;
+            graceTime = 0;
             if (canGoDash) {
                 dashTime = dashAnimLength;
             }
@@ -137,7 +140,7 @@ public class Movement : MonoBehaviour
         animator.SetBool("isGrounded", grounded);
         animator.SetBool("walledLeft", walledLeft);
         animator.SetBool("walledRight", walledRight);
-        animator.SetBool("dashing", (dashTime > 0));
+        animator.SetBool("dashing", (dashTime > 0 && dashAvailable));
         animator.SetBool("gliding", gliding);
 
         if (Mathf.Sign(dir.y) >= 0) {
