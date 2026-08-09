@@ -69,7 +69,10 @@ public class GameManagerSingleton : MonoBehaviour
 
         // Respawn dialogue loading
         thingsToSay = new List<Dialogue>();
-        if (firstDialogue) {thingsToSay.Add(ralphDia);}
+        if (firstDialogue) {
+            thingsToSay.Add(ralphDia);
+            firstDialogue = false;
+        }
 
         switch (reason)
         {
@@ -94,6 +97,7 @@ public class GameManagerSingleton : MonoBehaviour
         }
 
         if (thingsToSay.Count > 0) {StartCoroutine(LoadDia());}
+        reason = RespawnReason.None;
     }
 
     IEnumerator LoadDia() {
@@ -101,7 +105,11 @@ public class GameManagerSingleton : MonoBehaviour
             narratorObj.GetComponent<NPCDialogue>().dialogue = thingsToSay[0];
             narratorObj.GetComponent<NPCDialogue>().DialogueStart();
             thingsToSay.RemoveAt(0);
-            yield return new WaitForSeconds(DialogueManager.Instance.totalDiaTime);
+            float waitTime = DialogueManager.Instance.totalDiaTime;
+            if (waitTime <= 3) {
+                waitTime = 3;
+            }
+            yield return new WaitForSeconds(waitTime);
         }
         narratorObj.GetComponent<NPCDialogue>().DialogueStop();
     }
