@@ -6,6 +6,7 @@ public class GameManagerSingleton : MonoBehaviour
 
     public Transform SpawnPoint;
     public GameObject player;
+    [SerializeField] public AudioClip newDefault;
     
     private void Awake()
     {
@@ -22,6 +23,8 @@ public class GameManagerSingleton : MonoBehaviour
 
     private void Start() {
         RespawnPlayer();
+        AudioManager.Instance.defaultAmbience = newDefault;
+        AudioManager.Instance.SwapToDefault();
     }
 
     public void RespawnPlayer() {

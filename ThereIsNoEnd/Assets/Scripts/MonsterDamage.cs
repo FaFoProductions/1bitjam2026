@@ -8,6 +8,13 @@ public class MonsterDamage : MonoBehaviour
     public Rigidbody2D playerRB;
     public Transform playerTransform;
     [SerializeField] private float knockbackForce = 2f;
+    
+    private void Start() {
+        GameObject player = GameObject.FindWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
+        playerRB = player.GetComponent<Rigidbody2D>();
+        playerTransform = player.transform;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

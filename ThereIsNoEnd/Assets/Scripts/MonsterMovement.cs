@@ -7,11 +7,16 @@ public class MonsterMovement : MonoBehaviour
     public float moveSpeed;
     public int patrolDestination; // the patrolpoint the monster is currently moving towards
 
-    public Transform playerTransform;
+    private Transform playerTransform;
     public bool isChaching;
     public float chaseDistance;
 
     public int playerLayerMask;
+
+
+    private void Start() {
+        playerTransform = GameObject.FindWithTag("Player").transform;
+    }
 
     private void Update()
     {
@@ -22,13 +27,12 @@ public class MonsterMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dis, chaseDistance);
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
-            Debug.Log("We are chasing!!!");
             isChaching = true;
 
  
         } else
         {
-            Debug.Log("No chase");
+
             isChaching = false;
         }
 

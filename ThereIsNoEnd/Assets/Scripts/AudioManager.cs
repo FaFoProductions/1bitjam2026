@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public AudioClip defaultAmbience;
     [SerializeField] public float fadeTime = 1f;
     private bool isPlayingTrack1;
-    private AudioSource track1, track2;
+    private AudioSource track1 = null, track2 = null;
 
     private void Awake()
     {

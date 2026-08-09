@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 699954448823300965}
   - component: {fileID: 6948722178860961816}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Head
   m_TagString: Weak Point
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -177,9 +177,8 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
-  moveSpeed: 3
+  moveSpeed: 2
   patrolDestination: 0
-  playerTransform: {fileID: 0}
   isChaching: 0
   chaseDistance: 2
   playerLayerMask: 7
