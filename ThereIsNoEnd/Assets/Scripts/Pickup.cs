@@ -21,15 +21,15 @@ public class Pickup : MonoBehaviour
             Movement playerStats = collision.gameObject.GetComponent<Movement>();
             switch (upgrade)
             {
-                case Power.Swim: playerStats.canGoWater = true;
+                case Power.Swim: playerStats.canGoWater = true; GameManagerSingleton.Instance.reason = GameManagerSingleton.RespawnReason.Water;
                 break;
-                case Power.Float: playerStats.canGoFloat = true;
+                case Power.Float: playerStats.canGoFloat = true; GameManagerSingleton.Instance.reason = GameManagerSingleton.RespawnReason.Float;
                 break;
-                case Power.Dash: playerStats.canGoDash = true;
+                case Power.Dash: playerStats.canGoDash = true; GameManagerSingleton.Instance.reason = GameManagerSingleton.RespawnReason.Dash;
                 break;
-                case Power.DoubleJump: playerStats.maxAirJumps = 1;
+                case Power.DoubleJump: playerStats.maxAirJumps = 1; GameManagerSingleton.Instance.reason = GameManagerSingleton.RespawnReason.DoubleJump;
                 break;
-                case Power.Climb: playerStats.canGoClimb = true;
+                case Power.Climb: playerStats.canGoClimb = true; GameManagerSingleton.Instance.reason = GameManagerSingleton.RespawnReason.Climb;
                 break;
             }
             Destroy(gameObject);
