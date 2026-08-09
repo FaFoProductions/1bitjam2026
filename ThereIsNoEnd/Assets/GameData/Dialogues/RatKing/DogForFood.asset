@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DogForFood
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   characterName: The Rat King
-  characterSprite: {fileID: -6724568306553720550, guid: 753870a1b6c1d3d409b350b346042d96, type: 3}
+  characterSprite: {fileID: -109722343, guid: 753870a1b6c1d3d409b350b346042d96, type: 3}
   dialogue:
   - Your dog will be food for my rats!

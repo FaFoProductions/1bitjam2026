@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Killl
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   characterName: The Rat King
-  characterSprite: {fileID: 0}
+  characterSprite: {fileID: -109722343, guid: 753870a1b6c1d3d409b350b346042d96, type: 3}
   dialogue:
   - Arrrrrgggggghhhhh! Yoooooouuuuu agaaainnnn!

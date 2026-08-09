@@ -56,12 +56,15 @@ public class GameManagerSingleton : MonoBehaviour
     }
 
     private void Start() {
-        RespawnPlayer();
+        Invoke(nameof(SwapDefaultTrack),15f);
+    }
+    private void SwapDefaultTrack() {
         AudioManager.Instance.defaultAmbience = newDefault;
         AudioManager.Instance.SwapToDefault();
     }
 
     public void RespawnPlayer() {
+        StopAllCoroutines();
         player.transform.position = SpawnPoint.position;
         Camera.main.transform.position = player.transform.position;
         player.GetComponent<PlayerHealth>().health = player.GetComponent<PlayerHealth>().maxHealth;

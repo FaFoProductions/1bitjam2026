@@ -21,7 +21,7 @@ public class Pickup : MonoBehaviour
             Movement playerStats = collision.gameObject.GetComponent<Movement>();
             switch (upgrade)
             {
-                case Power.Swim: playerStats.canGoWater = true; GameManagerSingleton.Instance.reason = GameManagerSingleton.RespawnReason.Water;
+                case Power.Swim: playerStats.canGoWater = true; GameManagerSingleton.Instance.reason = GameManagerSingleton.RespawnReason.Swim;
                 break;
                 case Power.Float: playerStats.canGoFloat = true; GameManagerSingleton.Instance.reason = GameManagerSingleton.RespawnReason.Float;
                 break;
