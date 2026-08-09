@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6fa94bb309507e47a9fc6a1fa9a0ae8, type: 3}
   m_Name: Voff
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
-  characterName: 
-  characterSprite: {fileID: 0}
-  dialogue: []
+  characterName: Whitby, the Dog
+  characterSprite: {fileID: -2826590007926514514, guid: 6d55ee4b2f0f73a8c8d7a40b3ab17e1f, type: 3}
+  dialogue:
+  - Voff!!!
