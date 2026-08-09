@@ -8,6 +8,7 @@ public class MonsterDamage : MonoBehaviour
     public Rigidbody2D playerRB;
     public Transform playerTransform;
     [SerializeField] private float knockbackForce = 2f;
+    public bool bite = false;
     
     private void Start() {
         GameObject player = GameObject.FindWithTag("Player");
@@ -20,16 +21,22 @@ public class MonsterDamage : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Player takes damage");
             playerHealth.TakeDamage(damage, gameObject.tag);
             if (gameObject.tag == "Enemy") {
                 collision.gameObject.GetComponent<Movement>().PlayTakingDamage();
+                bite = true;
+                Invoke(nameof(StopBite),0.1f);
             } else if (gameObject.tag == "Spike") {
                 collision.gameObject.GetComponent<Movement>().PlaySpikeDamage();
             }
             KnockBackPlayer();
         }
     }
+
+    void StopBite() {
+        bite = false;
+    }
+
 
     private void KnockBackPlayer()
     {
