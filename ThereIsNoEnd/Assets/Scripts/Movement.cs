@@ -57,6 +57,8 @@ public class Movement : MonoBehaviour
     public bool canGoClimb = false;
     private float graceTime;
     private float dashTime;
+    public float coyoteTime = 0.1f;
+    private float coyoteTimer;
     private bool jump;
     private bool glide;
     private bool dash;
@@ -103,7 +105,7 @@ public class Movement : MonoBehaviour
     void JumpPerformed(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Started)
         {
-            if (grounded) {
+            if (grounded || coyoteTime > 0) {
                 jump = true;
             } else if ((walledLeft && canGoClimb) || (walledRight && canGoClimb)) {
                 jump = true;
@@ -230,7 +232,17 @@ public class Movement : MonoBehaviour
         }
 
         // Check if on ground
-        grounded = isGrounded(groundPos);
+        bool actualGrounded = isGrounded(groundPos);
+        if (coyoteTimer > 0 || actualGrounded) {
+            grounded = true;
+            if (actualGrounded) {
+                coyoteTimer = coyoteTimer;
+            } else {
+                coyoteTimer -= Time.deltaTime;
+            }
+        } else {
+            grounded = false;
+        }
         if (grounded) {dashAvailable = true;}
 
         // Check if on wall
