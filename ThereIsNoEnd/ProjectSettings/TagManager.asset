@@ -7,6 +7,7 @@ TagManager:
   - Weak Point
   - Enemy
   - Spike
+  - RotatorRat
   layers:
   - Default
   - TransparentFX

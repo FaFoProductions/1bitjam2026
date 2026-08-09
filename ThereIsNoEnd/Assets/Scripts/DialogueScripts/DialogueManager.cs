@@ -21,6 +21,8 @@ public class DialogueManager : MonoBehaviour
     private string[] localDialogue;
 
     private int i = 0;
+    public float wordTime;
+    public float totalDiaTime;
     
     private void Awake()
     {
@@ -42,11 +44,21 @@ public class DialogueManager : MonoBehaviour
         localDialogue = dialogue.dialogue;
         sprite.GetComponent<Image>().sprite = dialogue.characterSprite;
         LoadNextLine();
+
+        // Calculate total time
+        totalDiaTime = 0;
+        for (int i = 0; i < localDialogue.Length; i++) {
+            totalDiaTime += calcDiaTime(localDialogue[i]);
+        }
+    }
+
+    private float calcDiaTime(string s) {
+        return s.ToCharArray().Length * waitTime * 1.5f;
     }
 
     private void LoadNextLine()
     {
-        float wordTime = localDialogue[i].ToCharArray().Length * waitTime * 1.5f;
+        wordTime = calcDiaTime(localDialogue[i]);
         if (wordTime < 3)
         {
             timer = 3; 
