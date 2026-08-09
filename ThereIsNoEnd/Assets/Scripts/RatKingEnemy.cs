@@ -38,7 +38,7 @@ public class RatKingEnemy : MonoBehaviour
         // Chase system
         Vector2 dis = (playerTransform.position - transform.position).normalized;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dis, chaseDistance);
-        isChasing = hit.collider != null && hit.collider.CompareTag("Player")
+        isChasing = hit.collider != null && hit.collider.CompareTag("Player");
         
         if (isChasing) {
             moveDir = (playerTransform.position - transform.position).normalized;
