@@ -512,12 +512,15 @@ MonoBehaviour:
   walledLeft: 0
   walledRight: 0
   moveDir: {x: 0, y: 0}
-  maxAirJumps: 0
   airJumps: 0
   wallJumpMod: 0.3
   floatEffect: 0.2
-  canGoWater: 0
   inWater: 0
+  canGoWater: 0
+  canGoFloat: 0
+  canGoDash: 0
+  maxAirJumps: 0
+  canGoClimb: 0
 --- !u!50 &812141241740025331
 Rigidbody2D:
   serializedVersion: 5
@@ -543,7 +546,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &8717292772650610521
 CapsuleCollider2D:
