@@ -21,7 +21,7 @@ public class MonsterDamage : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Player takes damage");
-            playerHealth.TakeDamage(damage);
+            playerHealth.TakeDamage(damage, gameObject.tag);
             if (gameObject.tag == "Enemy") {
                 collision.gameObject.GetComponent<Movement>().PlayTakingDamage();
             } else if (gameObject.tag == "Spike") {

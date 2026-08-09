@@ -236,7 +236,7 @@ public class Movement : MonoBehaviour
         if (coyoteTimer > 0 || actualGrounded) {
             grounded = true;
             if (actualGrounded) {
-                coyoteTimer = coyoteTimer;
+                coyoteTimer = coyoteTime;
             } else {
                 coyoteTimer -= Time.deltaTime;
             }

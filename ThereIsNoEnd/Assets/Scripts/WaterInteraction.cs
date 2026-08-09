@@ -10,7 +10,7 @@ public class Waterinteraction : MonoBehaviour
         {
             player = collision.gameObject;
             if (!player.GetComponent<Movement>().canGoWater) {
-                player.GetComponent<PlayerHealth>().TakeDamage(player.GetComponent<PlayerHealth>().maxHealth);
+                player.GetComponent<PlayerHealth>().TakeDamage(player.GetComponent<PlayerHealth>().maxHealth, "Water");
             } else {
                 player.GetComponent<Movement>().inWater = true;
                 player.GetComponent<Movement>().EnteredWater();

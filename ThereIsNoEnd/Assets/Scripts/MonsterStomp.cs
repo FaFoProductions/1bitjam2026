@@ -10,6 +10,8 @@ public class MonsterStomp : MonoBehaviour
             Debug.Log("DESTROY MONSTER: " + collision.gameObject.name);
             collision.gameObject.GetComponentInParent<MonsterMovement>().DestroyMonster();
             GetComponentInParent<Movement>().PlayDoingDamage();
-        } 
+        } else if (collision.gameObject.tag == "RotatorRat"){
+            collision.gameObject.GetComponentInParent<RatKingEnemy>().DamageRat(1);
+        }
     }
 }
